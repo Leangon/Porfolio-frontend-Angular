@@ -45,7 +45,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
