@@ -1,0 +1,33 @@
+{
+    "nombre": "Leandro González",
+    "titulo": "Hola, mi nombre es Leandro González y construyo paginas web",
+    "discription": "Soy un desarrollador full stack. Actualmente estoy trabajando en un proyecto de Oracle ONE en Alura Latam y también estoy estudiando en Arg. programa. Me encanta aprender nuevas tecnologías y me gusta estar siempre al día en cuanto a las últimas tendencias en el desarrollo de aplicaciones",
+    "image": "url",
+    "about": {
+        "p1": "En 2021 comencé mi carrera profesional como desarrollador web. Soy autodidacta y me gusta aprender constantemente. He desarrollado varios proyectos web independientes y actualmente trabajo en DevelopFit. Me encanta trabajar en proyectos interesantes y desafiantes. Siempre estoy buscando nuevas oportunidades para aprender y crecer en mi carrera como desarrollador web. Me encanta trabajar en equipo y colaborar con mis compañeros para producir aplicaciones de alta calidad.",
+        "p2": "En mi tiempo libre, me gusta leer y aprender sobre tecnología y desarrollo de aplicaciones. También me gusta salir con amigos y disfrutar de la vida. Estoy emocionado de seguir creciendo y espero tener la oportunidad de trabajar en proyectos interesantes y desafiantes en el futuro."
+    },
+    "education":[
+        {
+            "universidad": "Universidad de general Sarmiento",
+            "title": "Lic. en economía",
+            "img": "../assets/images/logoungs.png",
+            "start": "2018",
+            "end": "2022"
+        },
+        {
+            "universidad": "Alura LATAM",
+            "title": "Web developers",
+            "img": "../assets/images/alura_logo.png",
+            "start": "2021",
+            "end": "2022"
+        },
+        {
+            "universidad": "Argentina Programa",
+            "title": "Desarrollador full stack",
+            "img": "../assets/images/argentina-programa.jpg",
+            "start": "2022",
+            "end": "2022"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+<section class="academic" id="formacion">
+    <div class="academic__content">
+        <h2 class="academic__title">Formación académica</h2>
+        
+        <div class="academic__courses">
+            <div class="academic__courses__box" *ngFor="let educacion of educationList">
+                <ul class="academic__courses__list">
+                    <!-- Agregar logo de la institución de formación -->
+                    <li class="academic__courses__item__img"><img [src]="educacion.img"></li>
+                    <li class="academic__courses__item__title">
+                        <h4>{{educacion.universidad}}</h4>
+                    </li>
+                    <li class="academic__courses__item__subtitle">
+                        <p>{{educacion.title}}</p>
+                    </li>
+                    <li class="academic__courses__item__subtitle">
+                        <p><time>{{educacion.start}}</time> - <time>{{educacion.end}}</time></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="icon">
+            <i class="fa-solid fa-pen"></i>
+            <i class="fa-solid fa-trash"></i>
+        </div> 
+    </div> 
+</section>

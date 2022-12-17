@@ -1,0 +1,36 @@
+<section class="formcontato" id="contacto">
+    <div class="formcontato__contacto">
+        <div class="formcontato--esquerda">
+            <img class="formcontato__img" src="../assets/images/contact1.svg">
+        </div>
+
+        <div class="formcontato__text">
+            <h2 class="formcontato__title">Contacto</h2>
+            <h3 class="formcontato__subtext">¿Quieres contactarme?</h3>
+            <h3 class="formcontato__subtext">Complete el siguiente formulario y me pondré en contacto con usted.</h3>
+            <form class="form" name="form" method="POST">
+                <div class="input-container">
+                    <input class="input" id="name" type="text" name="name" placeholder="Nombre" required data-tipo="nombre">
+                    <label class="input-label" for="name">Nombre</label>
+                    <span class="input-message-error"></span>
+                </div>
+                <div class="input-container">
+                    <input  class="input" id="email" name="email" type="email" placeholder="Email" required data-tipo="email">
+                    <label class="input-label" for="email:">Email</label>
+                    <span class="input-message-error"></span>
+                </div>
+                <div class="input-container">
+                    <input class="input" type="text" name="asunto" placeholder="Asunto" id="subject" required data-tipo="asunto">
+                    <label class="input-label" for="asunto">Asunto</label>
+                    <span class="input-message-error"></span>
+                </div>
+                <div class="input-container">
+                    <textarea class="formcontato__textarea" rows="5" cols="40" id="message" name="mensaje" required placeholder="Mensaje" data-tipo="mensaje"></textarea>
+                    <label class="input-label" for="mensaje">Mensaje</label>
+                    <span class="input-message-error"></span>
+                </div>
+                <button type="submit" class="formcontato__boton">Enviar mensaje</button>
+            </form>
+        </div>
+    </div>
+</section>

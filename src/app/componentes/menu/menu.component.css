@@ -1,0 +1,49 @@
+/*Sección Menu*/
+
+.menu{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto;
+    padding: 16px 0;
+}
+
+.menu__header{
+    display: flex;
+    align-items: center;
+}
+
+.menu__title{
+    margin-left: 0.6rem;
+}
+
+.menu__list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.menu__list__item{
+    padding: 0 0.7rem;
+}
+
+.contact{
+    font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+
+    .menu{
+        width: 90%;
+    }
+
+    .menu__list__item{
+        display: none;
+    }
+
+    .log{
+        visibility: visible;
+        display: contents;
+    }
+}
