@@ -2,7 +2,7 @@
   <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
     <div>
       <label for="email">Email: </label>
-      <input type="email" formControlName="email">
+      <input type="email" formControlName="email" class="form-control">
     </div>
     <!-- Gracias al getter que configuramos en el controlador -->
     <div *ngIf="Mail?.errors  && Mail?.touched">
@@ -13,26 +13,16 @@
     <br />
     <div>
       <label for="exampleInputPassword1" class="form-label">Password: </label>
-      <input type="password" formControlName="password" [class.border-danger]="MailValid">
+      <input class="form-control" type="password" formControlName="password" [class.border-danger]="MailValid">
     </div>
     <!-- Gracias al getter que configuramos en el controlador -->
     <div *ngIf="Password?.errors  && Password?.touched">
       <p *ngIf="Password?.hasError('required')" class="error">El password es requerido.</p>
       <p *ngIf="Password?.errors?.minlength" class="error">El password debe ser de 8 o más caracteres.</p>
     </div>
-    <br />
-    <div>
-      <button type="submit">Iniciar Sesión</button>
+    <br/>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary">Iniciar sesión</button>
     </div>
   </form>  
-</div>
-
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</div>
-
-<div>
-  <p>Un debuger para mostrar que es posible hacer un biding directo al formulario <strong>{{form.value.email}}</strong><strong>{{form.value.password}}</strong><p>
-    <br>
-
 </div>

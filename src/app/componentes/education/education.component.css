@@ -1,7 +1,6 @@
 /** Formacion Académica*/
 .academic{
     background: var(--cor-de-cards);
-    /* background: rebeccapurple; */
 }
 
 .academic__content{
@@ -35,8 +34,8 @@
 .academic__courses__list{
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
     width: 100%;
+    padding: 0;
 }
 .academic__courses__item__img{
     display: flex;
@@ -56,9 +55,7 @@
         width: 90%;
         padding: 2rem 0;
     }
-    .academic__courses{
-        gap: 0.5rem;
-    }
+   
 
     .academic__courses__box{
         height: 165px;

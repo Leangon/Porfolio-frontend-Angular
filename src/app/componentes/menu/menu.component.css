@@ -2,6 +2,7 @@
 
 .menu{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 70%;
     margin: auto;
@@ -13,8 +14,13 @@
     align-items: center;
 }
 
+.menu__image{
+    width: 150px;
+}
+
 .menu__title{
     margin-left: 0.6rem;
+    margin-bottom: 0;
 }
 
 .menu__list{

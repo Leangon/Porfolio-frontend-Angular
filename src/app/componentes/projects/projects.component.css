@@ -82,10 +82,6 @@
     .experience__text{
       font-size: 1rem;
     }
-
-    .experience__description{
-      flex-direction: column;
-    }
   }
 
   @media screen and (max-width: 425px) {

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
@@ -34,7 +35,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
     EducationComponent,
     ProjectsComponent,
     ContactComponent,
-    FooterComponent,
+    FooterComponent
   ],
  
   imports: [
@@ -45,7 +46,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
-
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

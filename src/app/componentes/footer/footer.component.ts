@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
-import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-footer',
@@ -10,13 +7,8 @@ import { MenuComponent } from '../menu/menu.component';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-
-  openDialog() {
-    this.dialog.open(MenuComponent);
-  }
-
 }

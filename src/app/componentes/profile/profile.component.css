@@ -17,6 +17,7 @@
 
 .title__bio{
     font-size: 3rem;
+    line-height: initial;
 }
 
 .title__subsection{
@@ -29,6 +30,7 @@
 .title__network{
     display: flex;
     gap: 2rem;
+    padding: 0;
 }
 
 .title__profile{
