@@ -1,53 +1,14 @@
 <section class="skills" id="skills">
     <h3 class="skills__title">Hard Skills</h3>
     <div class="skills__line">
-        <div class="skills__box">
+        <div class="skills__box" *ngFor="let skill of skillsList">
             <ul>
-                <li class="skills__img"><img src="../assets/images/htlm.png"></li>
-                <li class="skills__name"> HTML 5</li>
+                <li class="skills__img"><img [src]="skill.url_img"></li>
+                <li class="skills__name">{{skill.nombre}}</li>
             </ul>
-            <mat-progress-bar mode="determinate" value="90" color="Primary"></mat-progress-bar>
+            <mat-progress-bar mode="determinate" value="{{skill.porcentaje}}" color="Primary"></mat-progress-bar>
         </div>
-
-        <div class="skills__box">
-            <ul>
-                <li class="skills__img"> <img src="../assets/images/js_icon.png" alt=""></li>
-                <li class="skills__name">Javascript</li>
-            </ul>
-            <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
-        </div>
-
-        <div class="skills__box">
-            <ul>
-                <li class="skills__img"> <img src="../assets/images/php_icon.png" alt=""></li>
-                <li class="skills__name">PHP</li>
-            </ul>
-            <mat-progress-bar mode="determinate" value="30"></mat-progress-bar>
-        </div>
-
-        <div class="skills__box">
-            <ul>
-                <li class="skills__img"><img src="../assets/images/nodejs_icon.png" alt=""></li>
-                <li class="skills__name">Node JS</li>
-            </ul>
-            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-        </div>
-
-        <div class="skills__box">
-            <ul>
-                <li class="skills__img"> <img src="../assets/images/react_icon.png" alt=""> </li>
-                <li class="skills__name">React</li>
-            </ul>
-            <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
-        </div>
-
-        <div class="skills__box">
-            <ul>
-                <li class="skills__img"> <img src="../assets/images/css_icon.png" alt=""> </li>
-                <li class="skills__name">CSS</li>
-            </ul>
-            <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
-        </div>
+        
     </div>
     <div class="icon">
         <i class="fa-solid fa-pen"></i>
@@ -57,49 +18,20 @@
 
 <!-- Sección de Hobbies -->
 <section class="hobbies" id="hobbies">
-    <h3 class="hobbies__title">Hobbies</h3>
-    <div class="hobbies__line">
-        <div class="hobbies__box">
-            <ul>
-                <li class="hobbies__img"><img src="../assets/images/skate_icon.png"></li>
-                <li class="hobbies__name"> Patinaje</li>
-            </ul>
-        </div>
-
-        <div class="hobbies__box">
-            <ul>
-                <li class="hobbies__img"> <img src="../assets/images/guitar_icon.png" alt=""></li>
-                <li class="hobbies__name">Tocar bajo</li>
-            </ul>
-        </div>
-
-        <div class="hobbies__box">
-            <ul>
-                <li class="hobbies__img"> <img src="../assets/images/headphones_icon.png" alt=""></li>
-                <li class="hobbies__name">Oir música</li>
-            </ul>
-        </div>
-
-        <div class="hobbies__box">
-            <ul>
-                <li class="hobbies__img"><img src="../assets/images/tv_icon.png" alt=""></li>
-                <li class="hobbies__name">Ver séries</li>
-            </ul>
-        </div>
-
-        <div class="hobbies__box">
-            <ul>
-                <li class="hobbies__img"> <img src="../assets/images/forkspoon_icon.png" alt=""> </li>
-                <li class="hobbies__name">Cocinar</li>
-            </ul>
-        </div>
-
-        <div class="hobbies__box">
-            <ul>
-                <li class="hobbies__img"> <img src="../assets/images/camera_icon.png" alt=""> </li>
-                <li class="hobbies__name">Tomar fotos</li>
-            </ul>
-        </div>
+    <h3 class="hobbies__title">Experiencia laboral</h3>
+    <div>
+        <ul class="list-unstyled" *ngFor="let experiencia of experienciasList">
+            <li class="media d-flex">
+              <img class="mx-3 logo" [src]="experiencia.url_logo" alt="Generic placeholder image">
+              <div class="media-body">
+                <h2 class="mt-0 mb-1">{{experiencia.empresa}}</h2>
+                <h3 class="mb-1">{{experiencia.puesto}}</h3>
+                {{experiencia.descripcion}}
+                <p><time>{{experiencia.start_date}}</time> - <time>{{experiencia.end_date}}</time></p>
+              </div>
+            </li>
+        </ul>
+            
     </div>
     <div class="icon">
         <i class="fa-solid fa-pen"></i>
@@ -107,28 +39,4 @@
     </div>
 </section>
 
-<!--! Lista hecha con bootstrap para la experiencia laboral. Reemplazar los hobies.
-<ul class="list-unstyled">
-    <li class="media">
-      <img class="mr-3" src="..." alt="Generic placeholder image">
-      <div class="media-body">
-        <h5 class="mt-0 mb-1">List-based media object</h5>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-      </div>
-    </li>
-    <li class="media my-4">
-      <img class="mr-3" src="..." alt="Generic placeholder image">
-      <div class="media-body">
-        <h5 class="mt-0 mb-1">List-based media object</h5>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-      </div>
-    </li>
-    <li class="media">
-      <img class="mr-3" src="..." alt="Generic placeholder image">
-      <div class="media-body">
-        <h5 class="mt-0 mb-1">List-based media object</h5>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-      </div>
-    </li>
-  </ul>
-   -->
+

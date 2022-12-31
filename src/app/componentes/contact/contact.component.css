@@ -128,21 +128,21 @@
   }
 
 @media screen and (max-width: 768px) {
-    .formcontato__contacto{
-        width: 90%;
-    }
-
     .formcontato--esquerda{
         display: none;
     }
 }
 
 @media screen and (max-width: 425px) {
-    .formcontato__text{
-        width: 100%;
-    }
+  .formcontato__contacto {
+    width: 90%;
+  }
 
-    .formcontato__boton{
-        margin: auto;
-    }
+  .formcontato__text {
+    width: 100%;
+  }
+
+  .formcontato__boton {
+    margin: auto;
+  }
 }

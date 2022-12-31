@@ -1,5 +1,4 @@
 /*Sección Title*/
-
 .title__div{
     display: flex;
     gap: 1rem;
@@ -37,6 +36,12 @@
     max-width: 350px;
     border-radius: 50%;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
 @media screen and (max-width: 768px) {
    .title__container{

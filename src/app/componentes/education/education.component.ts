@@ -7,6 +7,7 @@ import { PorfolioService } from 'src/app/services/porfolio.service';
   styleUrls: ['./education.component.css']
 })
 export class EducationComponent implements OnInit {
+  
   educationList:any;
   constructor(private datosPorfolio:PorfolioService) { }
 
@@ -15,5 +16,4 @@ export class EducationComponent implements OnInit {
       this.educationList = data.education;
     })
   }
-
 }

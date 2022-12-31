@@ -2,7 +2,7 @@
     "nombre": "Leandro González",
     "titulo": "Hola, mi nombre es Leandro González y construyo paginas web",
     "discription": "Soy un desarrollador full stack. Actualmente estoy trabajando en un proyecto de Oracle ONE en Alura Latam y también estoy estudiando en Arg. programa. Me encanta aprender nuevas tecnologías y me gusta estar siempre al día en cuanto a las últimas tendencias en el desarrollo de aplicaciones",
-    "image": "url",
+    "image": "https://scontent.faep10-1.fna.fbcdn.net/v/t1.6435-9/141324792_10223874342077599_2257299615646869453_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8orLN8fPyEsAX-UQgc0&_nc_ht=scontent.faep10-1.fna&oh=00_AfD2lvE4dw4_ki0yEkGN_Cz1HwNww_DGbWDVsGzaRbS68w&oe=63D1E4C8",
     "about": {
         "p1": "En 2021 comencé mi carrera profesional como desarrollador web. Soy autodidacta y me gusta aprender constantemente. He desarrollado varios proyectos web independientes y actualmente trabajo en DevelopFit. Me encanta trabajar en proyectos interesantes y desafiantes. Siempre estoy buscando nuevas oportunidades para aprender y crecer en mi carrera como desarrollador web. Me encanta trabajar en equipo y colaborar con mis compañeros para producir aplicaciones de alta calidad.",
         "p2": "En mi tiempo libre, me gusta leer y aprender sobre tecnología y desarrollo de aplicaciones. También me gusta salir con amigos y disfrutar de la vida. Estoy emocionado de seguir creciendo y espero tener la oportunidad de trabajar en proyectos interesantes y desafiantes en el futuro."
@@ -28,6 +28,76 @@
             "img": "../assets/images/argentina-programa.jpg",
             "start": "2022",
             "end": "2022"
+        }
+    ],
+    "skills": [
+        {
+            "id": 1,
+            "nombre": "HTML5",
+            "url_img": "../assets/images/htlm.png",
+            "porcentaje": 90
+        },
+        {
+            "id": 2,
+            "nombre": "php",
+            "url_img": "../assets/images/php_icon.png",
+            "porcentaje": 30
+        },
+        {
+            "id": 3,
+            "nombre": "JavaScript",
+            "url_img": "../assets/images/js_icon.png",
+            "porcentaje": 70
+        },
+        {
+            "id": 4,
+            "nombre": "Node JS",
+            "url_img": "../assets/images/nodejs_icon.png",
+            "porcentaje": 40
+        },
+        {
+            "id": 5,
+            "nombre": "React",
+            "url_img": "../assets/images/react_icon.png",
+            "porcentaje": 50
+        },
+        {
+            "id": 6,
+            "nombre": "css",
+            "url_img": "../assets/images/css_icon.png",
+            "porcentaje": 70
+        }
+    ],
+    "experiencia":[
+        {
+            "id": 1,
+            "url_logo": "../assets/images/develop.png",
+            "empresa":"developFit",
+            "puesto": "desarrollador full stack",
+            "es_trabajo_actual": true,
+            "descripcion": "desarrollador full stack junior",
+            "start_date": "04/04/2022",
+            "end_date": "actualidad"
+        },
+        {
+            "id": 2,
+            "url_logo": "../assets/images/papier.png",
+            "empresa":"Papierttei",
+            "puesto": "Analista de logística",
+            "es_trabajo_actual": false,
+            "descripcion": "Analista de logìstica, generación de KPI, planilla de devoluciones e indicadores de desempeño de vendedores, facturación, créditos",
+            "start_date": "15/08/2014",
+            "end_date": "01/03/2022"
+        },
+        {
+            "id": 3,
+            "url_logo": "../assets/images/walmart-logo.png",
+            "empresa":"Walmart",
+            "puesto": "Administrativo",
+            "es_trabajo_actual": false,
+            "descripcion": "Administrativo de ventas e inventarios, proceso de perdidas, generación de reporter de ventas y gannacias",
+            "start_date": "01/08/2009",
+            "end_date": "01/04/2014"
         }
     ]
 }
