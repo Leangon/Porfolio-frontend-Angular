@@ -19,8 +19,8 @@
 <!-- Sección de Hobbies -->
 <section class="hobbies" id="hobbies">
     <h3 class="hobbies__title">Experiencia laboral</h3>
-    <div>
-        <ul class="list-unstyled" *ngFor="let experiencia of experienciasList">
+    <mat-card *ngFor="let experiencia of experienciasList">
+        <ul class="list-unstyled">
             <li class="media d-flex">
               <img class="mx-3 logo" [src]="experiencia.url_logo" alt="Generic placeholder image">
               <div class="media-body">
@@ -31,8 +31,7 @@
               </div>
             </li>
         </ul>
-            
-    </div>
+    </mat-card>
     <div class="icon">
         <i class="fa-solid fa-pen"></i>
         <i class="fa-solid fa-trash"></i>

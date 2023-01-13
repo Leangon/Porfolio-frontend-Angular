@@ -3,7 +3,7 @@
        <div class="menu__image">
          <img src="../assets/images/arg-programa.png">
        </div>
-        <h3 class="menu__title">{{miPorfolio.nombre}}</h3>
+        <h3 class="menu__title" *ngIf="miPorfolio">{{miPorfolio.nombre}}</h3>
     </header>
     <nav>
         <ul class="menu__list">
@@ -12,7 +12,7 @@
             <li class="menu__list__item"><a href="#formacion">Formación</a></li>
             <li class="menu__list__item"><a href="#xp">Proyectos</a></li>
             <li class="menu__list__item"><a href="#contacto">Contacto</a></li>
-            <li class="menu__list__item log"><button mat-button (click)="openDialog()">Login</button></li>
+            <li class="menu__list__item log"><button mat-button (click)="openDialog()">Iniciar sesión</button></li>
         </ul>
     </nav>
 </section>

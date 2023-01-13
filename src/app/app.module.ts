@@ -22,6 +22,7 @@ import { EducationComponent } from './componentes/education/education.component'
 import { ProjectsComponent } from './componentes/projects/projects.component';
 import { ContactComponent } from './componentes/contact/contact.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { FooterComponent } from './componentes/footer/footer.component';
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

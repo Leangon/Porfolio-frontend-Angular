@@ -1,5 +1,8 @@
 /*Sección Menu*/
-
+a{
+    text-decoration: none;
+    color: var(--cor-de-link);
+}
 .menu{
     display: flex;
     align-items: center;

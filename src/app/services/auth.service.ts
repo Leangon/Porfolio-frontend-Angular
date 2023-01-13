@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
 
-  url = 'http//localhost:3000/api'; //*La url que corresponda en casa caso
+  url = 'http//localhost:8080/porfolio'; //*La url que corresponda en casa caso
   token: any;
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -22,7 +22,7 @@ export class AuthService {
       })
   }
 
-  //*Para cerrar sesiòn eliminamos el token del localStorage
+  //*Para cerrar sesión eliminamos el token del localStorage
   logout() {
     localStorage.removeItem('token');
   }
