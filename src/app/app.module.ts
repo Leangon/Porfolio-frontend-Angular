@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
@@ -22,7 +22,6 @@ import { EducationComponent } from './componentes/education/education.component'
 import { ProjectsComponent } from './componentes/projects/projects.component';
 import { ContactComponent } from './componentes/contact/contact.component';
 import { FooterComponent } from './componentes/footer/footer.component';
-import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -48,7 +47,9 @@ import {MatCardModule} from '@angular/material/card';
     AppRoutingModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

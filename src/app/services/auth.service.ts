@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject, Observable} from "rxjs"; //*tiene la caracteristica de nocion de estado, al momento de suscribir va a poder acceder al ultimo valor disponible.
 import { Router } from "@angular/router";
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,19 +10,28 @@ import { Router } from "@angular/router";
 export class AuthService {
 
   url = 'http//localhost:8080/porfolio'; //*La url que corresponda en casa caso
+  currentUserSubject: BehaviorSubject<any>;
   token: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    console.log("El servicio esta corriendo");
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') || '{}'))
+   }
 
-  login(email: string, password: string) {
-    this.http.post(this.url + '/authenticate', { email: email, password: password })
-      .subscribe((resp: any) => {
-        //*Redireccionamos al usuario a su perfil
-        this.router.navigate(['profile']);
-        //*Guardamos el token en localStorage
-        localStorage.setItem('auth_token', resp.token)
-      })
+  iniciarSesion(credenciales: any ):Observable<any> {
+    return this.http
+      .post(this.url + '/authenticate', credenciales)
+      .pipe(map(data => {
+        localStorage.setItem('currrentUser', JSON.stringify(data));
+        this.currentUserSubject.next(data)
+        return data
+      }))  
   }
+
+  get UsuarioAuntenticado() {
+    return this.currentUserSubject.value
+  }
+
 
   //*Para cerrar sesión eliminamos el token del localStorage
   logout() {

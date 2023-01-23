@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PorfolioService } from 'src/app/services/porfolio.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,25 +13,26 @@ import { LoginComponent } from '../login/login.component';
 export class MenuComponent implements OnInit {
   miPorfolio: any;
 
-  constructor(private datosPorfolio:PorfolioService, private dialog: MatDialog) { }
+  constructor(private datosPorfolio:PorfolioService, private dialog: MatDialog, private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.miPorfolio = data;
-    });
+    });    
   }
-
+  
   openDialog() {
-    this.dialog.open(LoginComponent);
+    this.dialogService.dialogRef = this.dialog.open(LoginComponent);
   }
 
 }
 
-
-
-
-
-
+  
+  
+  
+  
+  
+  
 
 
 

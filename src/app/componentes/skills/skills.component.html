@@ -2,14 +2,16 @@
     <h3 class="skills__title">Hard Skills</h3>
     <div class="skills__line">
         <div class="skills__box" *ngFor="let skill of skillsList">
-            <ul>
-                <li class="skills__img"><img [src]="skill.url_img"></li>
-                <li class="skills__name">{{skill.nombre}}</li>
-            </ul>
-            <mat-progress-bar mode="determinate" value="{{skill.porcentaje}}" color="Primary"></mat-progress-bar>
-        </div>
-        
+            <mat-card>
+                <ul>
+                    <li class="skills__img"><img [src]="skill.url_img"></li>
+                    <li class="skills__name">{{skill.nombre}}</li>
+                </ul>
+                <mat-progress-bar mode="determinate" value="{{skill.porcentaje}}" color="Primary"></mat-progress-bar>
+            </mat-card>
+        </div>  
     </div>
+
     <div class="icon">
         <i class="fa-solid fa-pen"></i>
         <i class="fa-solid fa-trash"></i>
