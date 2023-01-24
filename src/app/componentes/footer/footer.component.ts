@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-footer',
@@ -8,8 +7,11 @@ import {MatInputModule} from '@angular/material/input';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
-  }
+    const year = document.getElementById("year") as HTMLSpanElement;
+    year.textContent = new Date().getFullYear().toString();
+  }  
 }

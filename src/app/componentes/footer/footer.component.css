@@ -1,6 +1,8 @@
 .footer__rodape{
     padding: 2rem;
     text-align: center;
-    width: 300px;
+    /* width: 300px; */
     margin: auto;
+    background: #111;
+    color: #fff;
 }

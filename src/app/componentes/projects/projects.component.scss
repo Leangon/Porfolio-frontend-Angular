@@ -1,4 +1,8 @@
-/** experiencia*/
+/** experiencia */
+
+.carousel-item{
+  transition: transform 2s ease, opacity 1.9s ease-out;
+}
 
 .experience{
     display: flex;
@@ -10,6 +14,10 @@
     gap: 1.5rem;
 }
 
+ .slide{
+  width: 100%;
+ }
+ 
 .experience__box{
     display: flex;
     align-items: center;
@@ -28,13 +36,8 @@
     width: 100%;
 }
 
-.container{
-    order: -1;
-}
-
-.experience__boton--repo, .experience__boton--demo, button{
+.experience__boton--repo, .experience__boton--demo, a>button{
     padding: 0.5rem 1rem;
-    font-size: 1rem;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -42,7 +45,6 @@
     background-color: var(--cor-de-letra);
     border: none;
     border-radius: 15px;
-    /* box-shadow: 0 9px #999; */
   }
 
   .experience__description{
@@ -69,18 +71,6 @@
 
     .experience__info{
       width: 100%;
-    }
-
-    .container{
-      order: 0;
-    }
-
-    .experience__title{
-      font-size: 1.3rem;
-    }
-
-    .experience__text{
-      font-size: 1rem;
     }
   }
 

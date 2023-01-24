@@ -23,44 +23,40 @@ a{
 
 .menu__title{
     margin-left: 0.6rem;
-    margin-bottom: 0;
-    display: block;
-   
-    white-space: nowrap;
+    margin-bottom: 0;   
+    /* white-space: nowrap;
     border-right: 2px solid;
     width: 17ch;
-
     animation: typing 3s steps(17) infinite, blink .5s infinite alternate;
-    overflow: hidden;
+    overflow: hidden; */
 }
 
-@keyframes typing {
+/* @keyframes typing {
     from {width: 0}
 }
 
 @keyframes blink {
     50% {border-color: transparent;}
-}
+} */
 
 .menu__list{
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .menu__list__item{
     padding: 0 0.7rem;
 }
 
-.contact{
-    font-weight: 700;
-}
-
 @media screen and (max-width: 768px) {
 
     .menu{
         width: 90%;
+    }
+
+    .menu__title{
+        display: none;
     }
 
     .menu__list__item{

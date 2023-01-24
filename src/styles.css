@@ -21,10 +21,7 @@ body {
 ol, ul,li {
     list-style: none;
 }
-a{
-    text-decoration: none;
-    color: var(--cor-de-link);
-}
+
 
 button{
     padding: 0.5rem 1rem;
@@ -38,13 +35,7 @@ button{
     border-radius: 15px;
   }
   
-  button:hover {
-    background-color: #678983
-  }
-  
   button:active {
-    background-color: #678983;
-    box-shadow: 0 5px #E6DDC4;
     transform: translateY(4px);
   }
 
@@ -56,6 +47,7 @@ button{
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem ;
+    height: 1.2rem;
     cursor: pointer;
   }
   
