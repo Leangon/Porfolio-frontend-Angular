@@ -11,5 +11,7 @@ export class DialogService {
   closeDialog(){
     this.dialogRef.close();
   }
+  
   constructor() { }
+
 }

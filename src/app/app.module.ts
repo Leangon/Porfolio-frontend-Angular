@@ -22,6 +22,7 @@ import { EducationComponent } from './componentes/education/education.component'
 import { ProjectsComponent } from './componentes/projects/projects.component';
 import { ContactComponent } from './componentes/contact/contact.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { BtnGoupComponent } from './componentes/btn-goup/btn-goup.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { FooterComponent } from './componentes/footer/footer.component';
     EducationComponent,
     ProjectsComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
+    BtnGoupComponent
   ],
  
   imports: [
