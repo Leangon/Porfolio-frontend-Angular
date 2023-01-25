@@ -1,6 +1,7 @@
 /** Formacion Académica*/
 .academic{
     background: var(--cor-de-cards);
+    color: var(--cor-de-letra);
 }
 
 .academic__content{
@@ -9,7 +10,7 @@
     width: 70%;
     margin: auto;
     gap: 2rem;
-    padding: 3rem 0;
+    padding: 1rem 0;
 }
 
 .academic__title{

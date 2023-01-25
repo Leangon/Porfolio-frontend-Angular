@@ -6,13 +6,13 @@
         <h3 class="menu__title" *ngIf="miPorfolio">{{miPorfolio.nombre}}</h3>
     </header>
     <nav>
-        <ul class="menu__list">
-            <li class="menu__list__item"><a href="#sobre-mi">About me</a></li>
-            <li class="menu__list__item"><a href="#skills">Skills</a></li>
-            <li class="menu__list__item"><a href="#formacion">Training</a></li>
-            <li class="menu__list__item"><a href="#xp">Proyects</a></li>
-            <li class="menu__list__item"><a href="#contacto">Contact</a></li>
-            <li class="menu__list__item log"><button class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" mat-button (click)="openDialog()">Log in</button></li>
+        <ul class="nav justify-content-end align-items-center">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#sobre-mi">About me</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#formacion">Training</a></li>
+            <li class="nav-item"><a class="nav-link" href="#xp">Proyects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto">Contact</a></li>
+            <li class="nav-item"><button class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" mat-button (click)="openDialog()">Log in</button></li>
         </ul>
     </nav>
 </section>

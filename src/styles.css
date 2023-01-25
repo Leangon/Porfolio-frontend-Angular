@@ -2,21 +2,36 @@
 :root {
   --cor-de-fondo:#ffffff;
   --cor-de-link: #000;
-  --cor-de-cards: linear-gradient(-131deg, #FCDFE7 0%, #FFE4C7 100%);
+  /* --cor-de-cards: linear-gradient(-131deg, #FCDFE7 0%, #FFE4C7 100%); */
 
   --cor-de-skills: #ffffff;
   --cor-de-letra: #181D31;
-
+  /* --cor-de-letra: #fff; */
   --font-family-body: "Montserrat", sans-serif;
   --font-family-logo: "Pacifico", cursive;
   --font-family-raleway: "Raleway", sans-serif;
 }
 
 body {
-    background-color: var(--cor-de-fondo);
+    /* background-color: var(--cor-de-fondo); */
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     /* font-size: 8px; */
+    /** Red Sunset */
+    /* background: #355C7D;
+    background: -webkit-linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D);
+    background: linear-gradient(to bottom, #C06C84, #6C5B7B, #355C7D); */
+    /** Monte Carlo */
+    background: #076585;
+    background: -webkit-linear-gradient(to bottom, #fff, #076585);
+    background: linear-gradient(to bottom, #fff, #076585);
+    /** Predawn*/
+    /* background: #FFA17F;
+    background: -webkit-linear-gradient(to bottom, #00223E, #FFA17F);
+    background: linear-gradient(to bottom, #00223E, #FFA17F); */
+
+
+
 }
 ol, ul,li {
     list-style: none;
@@ -44,7 +59,7 @@ button{
   }
 
   .icon{
-    display: flex;
+    display: none;
     justify-content: flex-end;
     gap: 0.5rem ;
     height: 1.2rem;

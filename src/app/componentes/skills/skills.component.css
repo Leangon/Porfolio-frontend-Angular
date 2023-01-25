@@ -1,19 +1,22 @@
 /** Seccion skill */
 
-.skills, .hobbies{
+.skills, .experience{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 70%;
     margin: 0 auto;
     gap: 1rem;
+    color: var(--cor-de-letra);
+    padding: 1rem 0;
 }
 
-.skills__title, .hobbies__title{
+.skills__title, .experience__title{
     text-align: center;
+    /* margin: 0; */
 }
 
-.skills__line, .hobbies__line{
+.skills__line {
     display: flex;
     justify-content: space-between;  
     flex-wrap: wrap;
@@ -21,24 +24,29 @@
     margin: 1rem 0;
 }
 
-.skills__box, .hobbies__box{
+.skills__box{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     width: 176px;
-    height: 174px;
-    padding: 1rem 0;
-    background: var(--cor-de-skills);
+    height: 154px;
+    padding-bottom: 1rem;
 }
 
-.skills__img, .skills__name, .hobbies__img, .hobbies__name{
+.skills__img, .skills__name {
     padding: 0.4rem;
+}
+
+.experience__card{
+    margin: 15px 0;
 }
 
 .logo{
     width: 64px;
     height: 64px;
 }
+
+
 
 @media screen and (max-width: 768px) {
     .skills, .hobbies{

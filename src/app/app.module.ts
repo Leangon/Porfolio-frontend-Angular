@@ -6,6 +6,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -50,8 +52,9 @@ import { BtnGoupComponent } from './componentes/btn-goup/btn-goup.component';
     MatDialogModule,
     MatProgressBarModule,
     MatCardModule,
-    MatInputModule
-
+    MatInputModule,
+    DragDropModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

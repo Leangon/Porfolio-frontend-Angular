@@ -10,6 +10,7 @@ a{
     width: 70%;
     margin: auto;
     padding: 16px 0;
+    color: var(--cor-de-letra);
 }
 
 .menu__header{
@@ -39,16 +40,6 @@ a{
     50% {border-color: transparent;}
 } */
 
-.menu__list{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.menu__list__item{
-    padding: 0 0.7rem;
-}
-
 @media screen and (max-width: 768px) {
 
     .menu{
@@ -61,10 +52,5 @@ a{
 
     .menu__list__item{
         display: none;
-    }
-
-    .log{
-        visibility: visible;
-        display: contents;
     }
 }
