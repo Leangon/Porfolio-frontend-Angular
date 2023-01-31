@@ -1,8 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { AuthService } from 'src/app/services/auth.service';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
-import { EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({

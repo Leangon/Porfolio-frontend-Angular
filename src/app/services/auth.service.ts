@@ -13,7 +13,7 @@ export class AuthService {
   currentUserSubject: BehaviorSubject<any>;
   token: any;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
     console.log("El servicio esta corriendo");
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') || '{}'))
    }

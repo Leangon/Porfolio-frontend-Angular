@@ -12,7 +12,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
-import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { RouterModule } from '@angular/router';
+// import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
@@ -51,7 +52,7 @@ import { BtnGoupComponent } from './componentes/btn-goup/btn-goup.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,
+    RouterModule,
     MatDialogModule,
     MatProgressBarModule,
     MatCardModule,
