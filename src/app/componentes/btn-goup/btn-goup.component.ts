@@ -29,7 +29,7 @@ export class BtnGoupComponent implements OnInit {
     var scroll: number = document.documentElement.scrollTop;
     if (scroll > 0) {
       window.requestAnimationFrame(this.backToTop);
-      window.scrollTo(0, scroll - (scroll / 10))      
+      window.scrollTo(0, scroll - (scroll / 15))      
     }
   }
 }

@@ -1,18 +1,22 @@
 /*Sección Title*/
+.title{
+    width: 70%;
+    margin: 1rem auto;
+}
 
 .title__div{
     display: flex;
-    gap: 1rem;
-    width: 70%;
-    margin: 1rem auto;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1rem 0;
     color: var(--cor-de-letra);
 }
 
 .title__container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
+    justify-content: space-between;
+    gap: 1.5rem;    
 }
 
 .title__bio{
@@ -60,25 +64,25 @@ a{
 }
 
 @media screen and (max-width: 768px) {
-   .title__container{
+  .title__container {
     gap: 0.5rem;
-   }
-   
-    .title__div{
+  }
+
+  .title {
     width: 90%;
-   }    
+  }
 
-   .title__bio{
+  .title__bio {
     font-size: 1.5rem;
-   }
+  }
 
-   .title__subsection{
+  .title__subsection {
     font-size: 1rem;
-   }
+  }
 
-   .title__profile{
+  .title__profile {
     width: 150px;
-   }
+  }
 }
 
 @media screen and (max-width: 425px) {

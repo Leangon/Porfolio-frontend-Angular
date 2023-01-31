@@ -8,7 +8,7 @@
     z-index: 1;
 }
 
-.button-gou:hover{
-    transform: scale(2);
+.button-goup:hover{
+    transform: scale(4);
     border-color: rgba(0,0,0,0.1);
 }

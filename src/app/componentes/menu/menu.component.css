@@ -16,6 +16,7 @@ a{
 .menu__header{
     display: flex;
     align-items: center;
+    gap: 1rem;
 }
 
 .menu__image{
@@ -46,11 +47,7 @@ a{
         width: 90%;
     }
 
-    .menu__title{
-        display: none;
-    }
-
-    .menu__list__item{
+    .nav-item{
         display: none;
     }
 }

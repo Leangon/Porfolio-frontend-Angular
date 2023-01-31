@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// import { PopoverModule } from 'ngx-bootstrap/components/popover';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
@@ -8,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -54,7 +57,8 @@ import { BtnGoupComponent } from './componentes/btn-goup/btn-goup.component';
     MatCardModule,
     MatInputModule,
     DragDropModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,29 @@
 <section class="menu">
     <header class="menu__header">
-       <div class="menu__image">
-         <img src="../assets/images/arg-programa.png">
-       </div>
-        <h3 class="menu__title" *ngIf="miPorfolio">{{miPorfolio.nombre}}</h3>
+      <div class="menu__image">
+        <img src="../assets/images/arg-programa.png">
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-info"
+                popover="I will hide on blur"
+                triggers="mouseenter:mouseleave">
+          Hover over me!
+        </button>
+      </div>
+      
+      <mat-slide-toggle 
+      class="example-margin" 
+      [color]="color" 
+      [disabled]="disabled"
+      (change)="updateIsChecked()"
+      [(ngModel)]="isChecked"
+      tabindex="0"
+      data-bs-toggle="popover" 
+      data-bs-trigger="hover focus" 
+      data-bs-content="Disabled popover">
+      Modo edit!
+    </mat-slide-toggle>
+      <h3 class="menu__title"></h3>
     </header>
     <nav>
         <ul class="nav justify-content-end align-items-center">
@@ -12,7 +32,7 @@
             <li class="nav-item"><a class="nav-link" href="#formacion">Training</a></li>
             <li class="nav-item"><a class="nav-link" href="#xp">Proyects</a></li>
             <li class="nav-item"><a class="nav-link" href="#contacto">Contact</a></li>
-            <li class="nav-item"><button class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" mat-button (click)="openDialog()">Log in</button></li>
+            <li class="nav-item-btn"><button class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" mat-button (click)="openDialog()">Log in</button></li>
         </ul>
     </nav>
 </section>

@@ -59,10 +59,10 @@ button{
   }
 
   .icon{
-    display: none;
+    display: flex;
     justify-content: flex-end;
     gap: 0.5rem ;
-    height: 1.2rem;
+    font-size: 1.2rem;
     cursor: pointer;
   }
   

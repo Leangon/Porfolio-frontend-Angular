@@ -1,4 +1,7 @@
 .div{
   width: 330px;
   height: 330px;
+  /* background: #076585;
+    background: -webkit-linear-gradient(to bottom, #fff, #076585);
+    background: linear-gradient(to bottom, #fff, #076585); */
 }

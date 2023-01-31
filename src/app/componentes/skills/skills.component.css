@@ -37,6 +37,10 @@
     padding: 0.4rem;
 }
 
+.ic{
+    height: 50px;
+    color: red;
+}
 .experience__card{
     margin: 15px 0;
 }
@@ -49,11 +53,11 @@
 
 
 @media screen and (max-width: 768px) {
-    .skills, .hobbies{
+    .skills, .experience{
         width: 90%;
     }
 
-    .skills__box, .hobbies__box{
+    .skills__box {
         width: 30%;
         height: 114px;
         padding: 0.2rem;
@@ -62,12 +66,12 @@
 }
 
 @media screen and (max-width: 425px) {
-.skills__line, .hobbies__line{
+.skills__line {
     gap: 0.5rem;
    
 }
 
-    .skills__box, .hobbies__box{
+    .skills__box {
         width: 45%;
         margin: 0.4rem 0;
     }
