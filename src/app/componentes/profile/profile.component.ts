@@ -8,7 +8,6 @@ import { ToggleService } from 'src/app/services/toggle.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  isCollapsed: boolean = true;
   isChecked: boolean = false;
   miPorfolio: any;
 

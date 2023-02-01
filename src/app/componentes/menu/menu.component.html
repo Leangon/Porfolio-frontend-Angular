@@ -3,27 +3,31 @@
       <div class="menu__image">
         <img src="../assets/images/arg-programa.png">
       </div>
-      <div class="col-md-2">
-        <button type="button" class="btn btn-info"
-                popover="I will hide on blur"
-                triggers="mouseenter:mouseleave">
-          Hover over me!
-        </button>
-      </div>
-      
-      <mat-slide-toggle 
-      class="example-margin" 
-      [color]="color" 
-      [disabled]="disabled"
-      (change)="updateIsChecked()"
-      [(ngModel)]="isChecked"
-      tabindex="0"
-      data-bs-toggle="popover" 
-      data-bs-trigger="hover focus" 
-      data-bs-content="Disabled popover">
-      Modo edit!
-    </mat-slide-toggle>
-      <h3 class="menu__title"></h3>
+       <mat-slide-toggle 
+       [color]="color" 
+       [disabled]="disabled"
+       (change)="updateIsChecked()"
+       [(ngModel)]="isChecked"
+       matTooltip="Solo admin, inicie sesión"
+       matTooltipClass="example-tooltip-red"
+       aria-label="Button that shows a red tooltip"
+       [matTooltipDisabled]="!showPopover"
+       >
+       Modo edit!
+       </mat-slide-toggle>
+       <!-- <mat-slide-toggle 
+       [color]="color" 
+       [disabled]="disabled"
+       (change)="updateIsChecked()"
+       [(ngModel)]="isChecked"
+       [popover]="showPopover? 'Solo admin, inicie sesión': ''"
+       triggers="click:mouseleave"
+       placement="bottom"
+       >
+       Modo edit!
+       </mat-slide-toggle> -->
+       
+      <!-- <h3 class="menu__title"></h3> -->
     </header>
     <nav>
         <ul class="nav justify-content-end align-items-center">

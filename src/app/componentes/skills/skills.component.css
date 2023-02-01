@@ -30,7 +30,7 @@
     justify-content: center;
     width: 176px;
     height: 154px;
-    padding-bottom: 1rem;
+    padding: 1rem;
 }
 
 .skills__img, .skills__name {

@@ -3,6 +3,7 @@ a{
     text-decoration: none;
     color: var(--cor-de-link);
 }
+
 .menu{
     display: flex;
     align-items: center;
@@ -26,6 +27,7 @@ a{
 .menu__title{
     margin-left: 0.6rem;
     margin-bottom: 0;   
+
     /* white-space: nowrap;
     border-right: 2px solid;
     width: 17ch;

@@ -14,7 +14,6 @@
 
 body {
     /* background-color: var(--cor-de-fondo); */
-    margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     /* font-size: 8px; */
     /** Red Sunset */
@@ -29,14 +28,11 @@ body {
     /* background: #FFA17F;
     background: -webkit-linear-gradient(to bottom, #00223E, #FFA17F);
     background: linear-gradient(to bottom, #00223E, #FFA17F); */
-
-
-
 }
+
 ol, ul,li {
     list-style: none;
 }
-
 
 button{
     padding: 0.5rem 1rem;
@@ -69,4 +65,30 @@ button{
 img {
  border-style: none;
  max-width: 100%;
+}
+
+::ng-deep   popover-container {
+	position: absolute;
+  }
+
+  .popover {
+    position: absolute;
+    top: 0;
+    left: 0 ;
+  }
+  
+  .popover-arrow {
+    position: absolute;
+  }
+  
+  .tooltip {
+    position: absolute;
+  }
+  
+  .tooltip-arrow {
+    position: absolute;
+  }
+
+  .example-tooltip-red {
+    background: #b71c1c;
 }

@@ -2,21 +2,16 @@
   <div class="title__div" *ngIf="miPorfolio">
     <div class="title__container">
       <h2 class="title__bio">{{miPorfolio.titulo}}</h2>
+      
       <h3 class="title__subsection">{{miPorfolio.discription}}</h3>
       
       <div *ngIf="toggleState()" class="icon">
-        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          <i class="fa-thin fa-pen-to-square" data-bs-toggle="collapse"></i>
+        <button class="btn btn-outline-secondary" type="button">
+          <i class="fa-thin fa-pen-to-square"></i>
         </button>
-        <button class="btn btn-outline-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-outline-danger" type="button" >
           <i class="fa-thin fa-trash"></i>
-        </button>
-        
-      </div>
-      <div class="collapse collapse-horizontal" id="collapseExample">
-        <div class="card card-body">
-          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-        </div>
+        </button> 
       </div>
       <!-- Enlaces de redes sociales -->
       <ul class="title__network">
