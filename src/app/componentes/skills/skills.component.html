@@ -1,47 +1,27 @@
 <section class="skills" id="skills">
-    <h3 class="skills__title">Hard Skills</h3>
+    <h3 class="skills__title">Skills</h3>
     <div class="skills__line">
       <mat-card class="skills__box" *ngFor="let skill of skillsList">
         <ul>
-          <li class="skills__img"><img [src]="skill.url_img"></li>
-          <li class="skills__name">{{skill.nombre}}</li>
+          <li class="skills__img"><img [src]="skill.urlImage"></li>
+          <li class="skills__name">{{skill.name}}</li>
         </ul>
-        <mat-progress-bar mode="determinate" value="{{skill.porcentaje}}" color="Primary"></mat-progress-bar>
+        <mat-progress-bar mode="determinate" value="{{skill.percent}}" color="accent"></mat-progress-bar>
+        <div *ngIf="toggleState()" class="icon">
+          <button mat-icon-button color="accent" matTooltip="Editar" aria-label="edit icon">
+            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="drive_file_rename_outline"></mat-icon>
+          </button>
+          <button mat-icon-button color="warn" matTooltip="Eliminar" aria-label="delete icon">
+            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete"></mat-icon>
+          </button>
+        </div>
       </mat-card>
     </div>
 
-    <div class="icon">
-      <i class="fa-thin fa-circle-plus"></i>
-      <i class="fa-thin fa-pen-to-square"></i>
-      <i class="fa-thin fa-trash"></i>
+    <div *ngIf="toggleState()" class="icon">
+      <button mat-icon-button matTooltip="Agregar" color="primary" aria-label="add cirle icon">
+        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle"></mat-icon>
+      </button>
     </div>
     <mat-divider></mat-divider>
 </section>
-
-<!-- Sección de works -->
-<section class="experience" id="experience">
-    <h3 class="experience__title">Experiencia laboral</h3>
-    <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <mat-card class="experience__card" *ngFor="let experiencia of experienciasList" cdkDrag>
-            <ul class="list-unstyled">
-                <li class="media d-flex">
-                  <img class="mx-3 logo" [src]="experiencia.url_logo" alt="Generic placeholder image">
-                  <div class="media-body">
-                    <h2 class="mt-0 mb-1">{{experiencia.empresa}}</h2>
-                    <h3 class="mb-1">{{experiencia.puesto}}</h3>
-                    {{experiencia.descripcion}}
-                    <p><time>{{experiencia.start_date}}</time> - <time>{{experiencia.end_date}}</time></p>
-                  </div>
-                </li>
-            </ul>
-        </mat-card>
-    </div>
-    <div class="icon">
-      <i class="fa-thin fa-circle-plus"></i>
-      <i class="fa-thin fa-pen-to-square"></i>
-      <i class="fa-thin fa-trash"></i>
-    </div>
-    <mat-divider></mat-divider>
-</section>
-
-

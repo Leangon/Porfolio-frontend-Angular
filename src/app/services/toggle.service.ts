@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 export class ToggleService {
 
   isCheckedSubject = new Subject<boolean>();
-  isChecked$ = this.isCheckedSubject.asObservable();
+  isChecked = this.isCheckedSubject.asObservable();
 
   constructor() { }
 

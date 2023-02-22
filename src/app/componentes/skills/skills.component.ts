@@ -1,7 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { PorfolioService } from 'src/app/services/porfolio.service';
-import { Experience } from './experience';
+import { ToggleService } from 'src/app/services/toggle.service';
+import { Experience } from '../../models/experience';
 
 @Component({
   selector: 'app-skills',
@@ -10,24 +11,26 @@ import { Experience } from './experience';
 })
 export class SkillsComponent implements OnInit {
 
-  skillsList: any;
-  experienciasList: any;
+  skillsList!: any[];
+  isChecked: boolean = false;
 
-  constructor(private datosPorfolio: PorfolioService) {
+  constructor(private datosPorfolio: PorfolioService, private toggle: ToggleService) {
     
    }
 
   ngOnInit(): void {
-    this.datosPorfolio.obtenerDatos().subscribe(data => {
-      this.skillsList = data.skills;
-      this.experienciasList = data.experiencia;
-    })
-
-   
+    this.datosPorfolio.getSkills().subscribe(data => {
+      this.skillsList = data;
+      console.log(this.skillsList);
+    });
+    this.toggle.isChecked.subscribe(
+      data => {
+        this.isChecked = data;
+      }
+    );
   }
-  
-  drop(event: CdkDragDrop<Experience[]>) {
-    moveItemInArray(this.experienciasList, event.previousIndex, event.currentIndex);
-    console.log(this.experienciasList);
+
+  toggleState() {
+    return this.isChecked
   }
 }

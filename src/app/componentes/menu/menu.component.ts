@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import { DialogService } from 'src/app/services/dialog.service';
 import { ThemePalette } from '@angular/material/core';
 import { ToggleService } from 'src/app/services/toggle.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -20,17 +21,26 @@ export class MenuComponent implements OnInit {
   color: ThemePalette = 'primary';
   isChecked: boolean = false;
   showPopover: boolean = false;
+  isAuthenticated: boolean = false
   
-  constructor(private datosPorfolio:PorfolioService, private dialog: MatDialog, private dialogService: DialogService, private toggle: ToggleService) {
-    if (this.disabled) {
-      this.showPopover = true;
-    }
+  constructor(private datosPorfolio:PorfolioService, private dialog: MatDialog, private dialogService: DialogService, private toggle: ToggleService, private auth: AuthService) {
+    
    }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.miPorfolio = data;
     }); 
+    if (this.auth.logIn) {
+      this.disabled = false;
+      this.isAuthenticated = true;
+      console.log(this.auth.logIn);
+    }else{
+      this.disabled = true;
+    }
+    if (this.disabled) {
+      this.showPopover = true;
+    }
   }
 
   updateIsChecked(){
@@ -39,6 +49,11 @@ export class MenuComponent implements OnInit {
 
   openDialog() {
     this.dialogService.dialogRef = this.dialog.open(LoginComponent);
+  }
+
+  onLogout():void {
+    this.auth.logout();
+    window.location.reload();
   }
 
 }

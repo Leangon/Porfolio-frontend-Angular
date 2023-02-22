@@ -100,10 +100,16 @@
       </button>
     </div>
 
-    <div class="icon">
-      <i class="fa-thin fa-circle-plus"></i>
-      <i class="fa-thin fa-pen-to-square"></i>
-      <i class="fa-thin fa-trash"></i>
+    <div *ngIf="toggleState()" class="icon">
+      <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon">
+        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle"></mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Editar" aria-label="edit icon">
+        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="drive_file_rename_outline"></mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Eliminar" aria-label="delete icon">
+        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete"></mat-icon>
+      </button>
     </div>
     
     <mat-divider></mat-divider>

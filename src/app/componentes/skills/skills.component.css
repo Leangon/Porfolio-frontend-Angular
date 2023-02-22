@@ -1,6 +1,6 @@
 /** Seccion skill */
 
-.skills, .experience{
+.skills{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -11,7 +11,7 @@
     padding: 1rem 0;
 }
 
-.skills__title, .experience__title{
+.skills__title{
     text-align: center;
     /* margin: 0; */
 }
@@ -29,20 +29,14 @@
     flex-direction: column;
     justify-content: center;
     width: 176px;
-    height: 154px;
+    /* height: 154px; */
     padding: 1rem;
+    background: #1E2121;
 }
 
 .skills__img, .skills__name {
     padding: 0.4rem;
-}
-
-.ic{
-    height: 50px;
-    color: red;
-}
-.experience__card{
-    margin: 15px 0;
+    color: aliceblue;
 }
 
 .logo{
@@ -50,29 +44,27 @@
     height: 64px;
 }
 
-
-
 @media screen and (max-width: 768px) {
-    .skills, .experience{
-        width: 90%;
-    }
+  .skills {
+    width: 90%;
+  }
 
-    .skills__box {
-        width: 30%;
-        height: 114px;
-        padding: 0.2rem;
-    }
-    
+  .skills__box {
+    width: 30%;
+    /* height: 114px; */
+    padding: 0.2rem;
+  }
+
 }
 
 @media screen and (max-width: 425px) {
-.skills__line {
+  .skills__line {
     gap: 0.5rem;
-   
-}
 
-    .skills__box {
-        width: 45%;
-        margin: 0.4rem 0;
-    }
+  }
+
+  .skills__box {
+    width: 45%;
+    margin: 0.4rem 0;
+  }
 }

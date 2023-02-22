@@ -1,7 +1,45 @@
+section{
+  background: #9796f0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #fbc7d4, #9796f0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #fbc7d4, #9796f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
 .div{
-  width: 330px;
+  width: 380px;
   height: 330px;
   /* background: #076585;
     background: -webkit-linear-gradient(to bottom, #fff, #076585);
     background: linear-gradient(to bottom, #fff, #076585); */
+    
+}
+
+.image{
+  display: block;
+  margin: 0 auto;
+  width: 60px;
+  padding-top: 20px;
+}
+
+.animation{
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0; /* La imagen está invisible */
+    filter: blur(10px); /* Se aplica un filtro de desenfoque para que se vea borrosa */
+  }
+  50% {
+    opacity: 1; /* La imagen se hace visible */
+    filter: blur(5px); /* Se disminuye el filtro de desenfoque para que se vea menos borrosa */
+  }
+  100% {
+    opacity: 1; /* La imagen sigue visible */
+    filter: blur(0); /* Se quita el filtro de desenfoque para que se vea nítida */
+  }
+}
+
+.title{
+  text-align: center;
 }

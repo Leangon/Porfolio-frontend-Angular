@@ -17,14 +17,22 @@
                         <p><time>{{educacion.start}}</time> - <time>{{educacion.end}}</time></p>
                     </li>
                 </ul>
+                <div *ngIf="toggleState()" class="icon">
+                  <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon">
+                    <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon"
+                      fontIcon="add_circle">
+                    </mat-icon>
+                  </button>
+                </div>
             </div>
             
         </div>
         
-        <div class="icon">
-            <i class="fa-thin fa-circle-plus"></i>
-            <i class="fa-thin fa-pen-to-square"></i>
-            <i class="fa-thin fa-trash"></i>
+        <div *ngIf="toggleState()" class="icon">
+          <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon">
+            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
+            </mat-icon>
+          </button>
         </div>
         <mat-divider></mat-divider>
     </div> 

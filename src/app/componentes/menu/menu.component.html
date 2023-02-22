@@ -36,7 +36,8 @@
             <li class="nav-item"><a class="nav-link" href="#formacion">Training</a></li>
             <li class="nav-item"><a class="nav-link" href="#xp">Proyects</a></li>
             <li class="nav-item"><a class="nav-link" href="#contacto">Contact</a></li>
-            <li class="nav-item-btn"><button class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" mat-button (click)="openDialog()">Log in</button></li>
+            <li class="nav-item-btn"><button routerLink="/login"  *ngIf="!isAuthenticated" class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="openDialog()">Log in</button></li>
+            <li class="nav-item-btn"><button *ngIf="isAuthenticated" class="btn btn-outline-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="onLogout()">Log out</button></li>
         </ul>
     </nav>
 </section>

@@ -1,18 +1,8 @@
 <section class="title">
-  <div class="title__div" *ngIf="miPorfolio">
-    <div class="title__container">
-      <h2 class="title__bio">{{miPorfolio.titulo}}</h2>
-      
-      <h3 class="title__subsection">{{miPorfolio.discription}}</h3>
-      
-      <div *ngIf="toggleState()" class="icon">
-        <button class="btn btn-outline-secondary" type="button">
-          <i class="fa-thin fa-pen-to-square"></i>
-        </button>
-        <button class="btn btn-outline-danger" type="button" >
-          <i class="fa-thin fa-trash"></i>
-        </button> 
-      </div>
+  <div class="title__div row" *ngIf="miPorfolio">
+    <div class="title__container col-xs-12 col-sm-9">
+      <h1 class="title__bio">{{miPorfolio.title}}</h1>
+      <h2 class="title__subsection">{{miPorfolio.description}}</h2>
       <!-- Enlaces de redes sociales -->
       <ul class="title__network">
         <li class="title__network__item">
@@ -42,13 +32,29 @@
       </ul>
     </div>
 
-    <div class="title__img">
-      <img class="title__profile" [src]="miPorfolio.image">
-      <div *ngIf="toggleState()" class="icon">
+    <div class="title__img col-3">
+      <img class="img-fluid rounded-circle border border-info" [src]="miPorfolio.urlImage">
+      <!-- <div *ngIf="toggleState()" class="icon">
         <i class="fa-thin fa-pen-to-square"></i>
         <i class="fa-thin fa-trash"></i>
-      </div>
+      </div> -->
     </div>
   </div>
   <mat-divider></mat-divider>
+</section>
+<section class="about" id="sobre-mi">
+  <div class="about__container" *ngIf="miPorfolio">
+      <h3 class="about__title">About me</h3>
+      <p class="about__paragraph">{{miPorfolio.aboutMe}}</p>
+      <!-- <p class="about__paragraph">{{miPorfolio.about.p2}}</p> -->
+      <div *ngIf="toggleState()" class="icon">
+          <button mat-icon-button matTooltip="Editar" aria-label="Example fab with a heart icon">
+            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="drive_file_rename_outline"></mat-icon>
+          </button>
+          <button mat-icon-button color="warn" matTooltip="Eliminar" aria-label="Example fab with a heart icon">
+            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete"></mat-icon>
+          </button>
+        </div>
+      <mat-divider></mat-divider>
+  </div>
 </section>

@@ -1,27 +1,33 @@
-<h1 mat-dialog-title>Inicio de sesión</h1>
-<mat-dialog-content class="div">
-  <form class="form-group" [formGroup]="form" (ngSubmit)="onEnviar($event)">
-    <div class="mb-4">
-      <label class="form-label" for="email">Email:</label>
-      <input class="form-control" type="email" formControlName="email" [ngClass]="{'is-invalid': MailInvalid, 'is-valid': MailValid}"  >
-      <!-- Gracias al getter que configuramos en el controlador -->
-      <div *ngIf="Mail?.errors  && Mail?.touched">
-        <p *ngIf="Mail?.hasError('required')" class="error">El email es requerido.</p>
-        <p *ngIf="Mail?.hasError('email')" class="error">El formato del email debe ser válido.</p>
+
+<section>
+  <img src="../../../assets/images/acceso.png" class="image" [ngClass]="{'animation': isAnimation}" alt="logo de acceso">
+  <h1 class="title" mat-dialog-title>Inicio de sesión</h1>
+  <mat-dialog-content class="div">
+    <form class="form-group" [formGroup]="form" (ngSubmit)="onEnviar($event)">
+      <div class="mb-4">
+        <label class="form-label" for="email">Email:</label>
+        <input class="form-control" type="email" formControlName="email" [ngClass]="{'is-invalid': MailInvalid, 'is-valid': MailValid}"  >
+        <!-- Gracias al getter que configuramos en el controlador -->
+        <div *ngIf="Mail?.errors && Mail?.touched">
+          <p *ngIf="Mail?.hasError('required')" class="error">El email es requerido.</p>
+          <p *ngIf="Mail?.hasError('email')" class="error">El formato del email debe ser válido.</p>
+        </div>
       </div>
-    </div>
-    <div class="mb-4">
-      <label for="exampleInputPassword1" class="form-label">Password:</label>
-      <input class="form-control" type="password" formControlName="password" [ngClass]="{'is-invalid': PasswordInvalid, 'is-valid': PasswordValid}">
-      <!-- Gracias al getter que configuramos en el controlador -->
-      <div *ngIf="Password?.errors  && Password?.touched">
-        <p *ngIf="Password?.hasError('required')" class="error">El password es requerido.</p>
-        <p *ngIf="Password?.errors?.minlength" class="error">El password debe temer 8 o más caracteres.</p>
+      <div class="mb-4">
+        <label for="exampleInputPassword1" class="form-label">Password:</label>
+        <input class="form-control" type="password" formControlName="password" [ngClass]="{'is-invalid': PasswordInvalid, 'is-valid': PasswordValid}">
+        <!-- Gracias al getter que configuramos en el controlador -->
+        <div *ngIf="Password?.errors  && Password?.touched">
+          <p *ngIf="Password?.hasError('required')" class="error">El password es requerido.</p>
+          <p *ngIf="Password?.errors?.minlength" class="error">El password debe tener 8 o más caracteres.</p>
+        </div>
       </div>
-    </div>
-     <div class="d-grid">
-       <button type="submit" class="btn btn-outline-success" cdkFocusInitial><i class="fa-thin fa-right-to-bracket"></i>
-         Iniciar sesión</button>
-     </div>
-  </form>  
-</mat-dialog-content>
+       <div class="d-grid">
+         <button (click)="changeAnimation()" type="submit" mat-fab extended color="primary">
+           <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="login icon">login</mat-icon>
+           Iniciar sesión
+         </button>
+       </div>
+    </form>  
+  </mat-dialog-content>
+</section>

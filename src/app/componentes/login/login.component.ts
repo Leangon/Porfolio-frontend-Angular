@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   email = '';
   password = '';
   form: any = FormGroup;
+  isAnimation: boolean = false;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private ruta: Router, private dialogService: DialogService) { 
 
@@ -57,11 +58,6 @@ export class LoginComponent implements OnInit {
     return this.Mail?.touched && this.Mail.valid;
   }
 
-  Login() {
-    //*El servicio de AuthService.login ya redirecciona
-    //*En caso de inicio de sesiòn positivo.
-  }
-
   onEnviar(event: Event){
     //* Detenemos la propagación o ejecución del compotamiento submit de un form
     event.preventDefault; 
@@ -71,14 +67,17 @@ export class LoginComponent implements OnInit {
       //* Llamamos a nuestro servicio para enviar los datos al servidor
       //* También podríamos ejecutar alguna lógica extra
       this.authService.iniciarSesion(this.form.value).subscribe(data => {
-        console.log("Data: " + JSON.stringify(data));
-        this.ruta.navigate(['/porfolio'])
+        console.log("Data: " + JSON.stringify(data.token));
+        // this.ruta.navigate(['/porfolio'])
       })
-      this.dialogService.closeDialog();
       // alert("Todo salio bien ¡Enviar formuario!")
     }else{
       //* Corremos todas las validaciones para que se ejecuten los mensajes de error en el template
       this.form.markAllAsTouched(); 
     }
+  }
+
+  changeAnimation(): boolean{
+    return this.isAnimation = true;
   }
 }

@@ -17,9 +17,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data => {
-      this.miPorfolio = data;
+      this.miPorfolio = data[0];
+      console.log(this.miPorfolio);
     });
-    this.toggle.isChecked$.subscribe(
+    this.toggle.isChecked.subscribe(
       data => {
         this.isChecked = data;
       }

@@ -1,0 +1,31 @@
+.experience{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+    gap: 1rem;
+    color: var(--cor-de-letra);
+    padding: 1rem 0;
+}
+
+.experience__title{
+    text-align: center;
+    /* margin: 0; */
+}
+
+.experience__card{
+    margin: 15px 0;
+}
+
+.logo{
+    width: 64px;
+    height: 64px;
+}
+
+@media screen and (max-width: 768px) {
+    .experience{
+        width: 90%;
+    }
+    
+}
