@@ -9,16 +9,14 @@ import { ToggleService } from 'src/app/services/toggle.service';
 })
 export class ProfileComponent implements OnInit {
   isChecked: boolean = false;
-  miPorfolio: any;
+  persona: any;
 
-  constructor(private datosPorfolio: PorfolioService, private toggle: ToggleService) {
-
-  }
+  constructor(private porfolioService: PorfolioService, private toggle: ToggleService) {}
 
   ngOnInit(): void {
-    this.datosPorfolio.obtenerDatos().subscribe(data => {
-      this.miPorfolio = data[0];
-      console.log(this.miPorfolio);
+    this.porfolioService.getPerson().subscribe(data => {
+      this.persona = data[0];
+      // console.log(this.persona)
     });
     this.toggle.isChecked.subscribe(
       data => {
@@ -26,9 +24,5 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
-
-  toggleState() {
-    return this.isChecked
-  }
-
+  
 }

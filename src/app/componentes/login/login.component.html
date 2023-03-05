@@ -6,11 +6,11 @@
     <form class="form-group" [formGroup]="form" (ngSubmit)="onEnviar($event)">
       <div class="mb-4">
         <label class="form-label" for="email">Email:</label>
-        <input class="form-control" type="email" formControlName="email" [ngClass]="{'is-invalid': MailInvalid, 'is-valid': MailValid}"  >
+        <input class="form-control" type="email" formControlName="email" [ngClass]="{'is-invalid': EmailInvalid, 'is-valid': EmailValid}"  >
         <!-- Gracias al getter que configuramos en el controlador -->
-        <div *ngIf="Mail?.errors && Mail?.touched">
-          <p *ngIf="Mail?.hasError('required')" class="error">El email es requerido.</p>
-          <p *ngIf="Mail?.hasError('email')" class="error">El formato del email debe ser válido.</p>
+        <div *ngIf="Email?.errors && Email?.touched">
+          <p *ngIf="Email?.hasError('required')" class="error">El email es requerido.</p>
+          <p *ngIf="Email?.hasError('email')" class="error">El formato del email debe ser válido.</p>
         </div>
       </div>
       <div class="mb-4">

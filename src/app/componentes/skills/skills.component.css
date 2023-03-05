@@ -28,15 +28,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* align-items: center; */
     width: 176px;
     /* height: 154px; */
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
     background: #1E2121;
 }
 
-.skills__img, .skills__name {
+.skills__img {
+    width: 48px;
+    height: 56px;
     padding: 0.4rem;
-    color: aliceblue;
+}
+
+.skills__name{
+  color: aliceblue;
 }
 
 .logo{

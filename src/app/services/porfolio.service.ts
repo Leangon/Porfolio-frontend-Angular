@@ -11,8 +11,12 @@ export class PorfolioService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerDatos(): Observable<Persona[]>{
+  getPerson(): Observable<Persona[]>{
     return this.http.get<Persona[]>('/api/personaVerLista');
+  }
+
+  updatePerson(id: number, persona: Persona): Observable<Persona>{
+    return this.http.put<Persona>(`/api/personaActualizar/${id}`, persona)
   }
   
 
@@ -24,12 +28,16 @@ export class PorfolioService {
     return this.http.post<Skill>('/api/skillNew', skill)
   }
 
+  detailSkill(id: number): Observable<Skill>{
+    return this.http.get<Skill>(`/api/skillFind/${id}`)
+  }
+
   updateSkill(id: number, skill: Skill): Observable<Skill>{
-    return this.http.put<Skill>(`api/skillUpdate/${id}`, skill)
+    return this.http.put<Skill>(`/api/skillUpdate/${id}`, skill)
   }
 
   deleteSkill(id: number): Observable<Skill>{
-    return this.http.delete<Skill>(`api/skillDelete/${id}`)
+    return this.http.delete<Skill>(`/api/skillDelete/${id}`)
   }
   
 }

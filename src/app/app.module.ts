@@ -24,7 +24,7 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { MenuComponent } from './componentes/menu/menu.component';
 import { LoginComponent } from "./componentes/login/login.component";
@@ -36,6 +36,10 @@ import { ProjectsComponent } from './componentes/projects/projects.component';
 import { ContactComponent } from './componentes/contact/contact.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { BtnGoupComponent } from './componentes/btn-goup/btn-goup.component';
+import { NewSkillComponent } from './componentes/skills/new-skill.component';
+import { InterceptorService } from './services/interceptor.service';
+import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
+import { EditSkillComponent } from './componentes/skills/edit-skill.component';
 
 
 @NgModule({
@@ -50,7 +54,10 @@ import { BtnGoupComponent } from './componentes/btn-goup/btn-goup.component';
     ProjectsComponent,
     ContactComponent,
     FooterComponent,
-    BtnGoupComponent
+    BtnGoupComponent,
+    NewSkillComponent,
+    PorfolioComponent,
+    EditSkillComponent
   ],
  
   imports: [
@@ -77,7 +84,9 @@ import { BtnGoupComponent } from './componentes/btn-goup/btn-goup.component';
     AccordionModule.forRoot(),
     CollapseModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

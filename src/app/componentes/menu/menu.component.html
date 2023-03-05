@@ -8,10 +8,10 @@
        [disabled]="disabled"
        (change)="updateIsChecked()"
        [(ngModel)]="isChecked"
+       [matTooltipDisabled]="!showPopover"
        matTooltip="Solo admin, inicie sesión"
        matTooltipClass="example-tooltip-red"
-       aria-label="Button that shows a red tooltip"
-       [matTooltipDisabled]="!showPopover"
+       aria-label="Button that shows edit buttons"
        >
        Modo edit!
        </mat-slide-toggle>
@@ -36,8 +36,20 @@
             <li class="nav-item"><a class="nav-link" href="#formacion">Training</a></li>
             <li class="nav-item"><a class="nav-link" href="#xp">Proyects</a></li>
             <li class="nav-item"><a class="nav-link" href="#contacto">Contact</a></li>
-            <li class="nav-item-btn"><button routerLink="/login"  *ngIf="!isAuthenticated" class="btn btn-outline-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="openDialog()">Log in</button></li>
-            <li class="nav-item-btn"><button *ngIf="isAuthenticated" class="btn btn-outline-danger" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="onLogout()">Log out</button></li>
+            <li class="nav-item-btn">
+              <button 
+                *ngIf="!isAuthenticated"
+                routerLink="/login"
+                class="btn btn-outline-primary"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                (click)="openDialog()">Log in
+              </button></li>
+            <li class="nav-item-btn">
+              <button 
+                *ngIf="isAuthenticated" 
+                class="btn btn-outline-danger"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                (click)="onLogout()">Log out</button></li>
         </ul>
     </nav>
 </section>

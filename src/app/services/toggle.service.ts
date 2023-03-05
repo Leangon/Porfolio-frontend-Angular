@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToggleService {
 
-  isCheckedSubject = new Subject<boolean>();
+  isCheckedSubject = new BehaviorSubject<boolean>(false);
   isChecked = this.isCheckedSubject.asObservable();
 
   constructor() { }

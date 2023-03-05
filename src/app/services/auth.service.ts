@@ -9,10 +9,8 @@ import { JwtDto } from '../models/jwtDto';
   providedIn: 'root'
 })
 export class AuthService {
-
   // url = 'http//localhost:8080/api'; //*La url que corresponda en casa caso
   currentUserSubject: BehaviorSubject<any>;
-  // token: any;
 
   constructor(private http: HttpClient) {
     console.log("El servicio esta corriendo");
@@ -24,16 +22,16 @@ export class AuthService {
     return this.http
       .post<JwtDto>('/api/auth/login', credenciales)
       .pipe(map(data => {
-        localStorage.setItem('currentUser', JSON.stringify(data.token));
+        localStorage.setItem('currentUser', JSON.stringify(data));
         this.currentUserSubject.next(data);
-        if (this.UsuarioAuntenticado){
-          window.location.reload();
-        }
+        // if (this.UsuarioAuntenticado){
+        //   window.location.reload();
+        // }
         return data
       }))
   }
 
-  get UsuarioAuntenticado(): boolean {
+  get UsuarioAuntenticado() {
     return this.currentUserSubject.value
   }
 

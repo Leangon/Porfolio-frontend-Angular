@@ -1,5 +1,19 @@
 <section class="skills" id="skills">
     <h3 class="skills__title">Skills</h3>
+    <div *ngIf="toggleState()" class="icon">
+      <button 
+      (click)="openDialog()" 
+      mat-icon-button 
+      matTooltip="Agregar" 
+      color="primary" 
+      aria-label="add cirle icon">
+        <mat-icon 
+        class="material-symbols-outlined" 
+        aria-hidden="false" 
+        aria-label="icon" 
+        fontIcon="add_circle"></mat-icon>
+      </button>
+    </div>
     <div class="skills__line">
       <mat-card class="skills__box" *ngFor="let skill of skillsList">
         <ul>
@@ -8,20 +22,18 @@
         </ul>
         <mat-progress-bar mode="determinate" value="{{skill.percent}}" color="accent"></mat-progress-bar>
         <div *ngIf="toggleState()" class="icon">
-          <button mat-icon-button color="accent" matTooltip="Editar" aria-label="edit icon">
-            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="drive_file_rename_outline"></mat-icon>
+          <button mat-icon-button color="accent" matTooltip="Editar" aria-label="edit icon"
+            (click)="openDialogEdit(skill.id)">
+            <mat-icon class="material-icons" aria-hidden="false" aria-label="icon"
+              fontIcon="mode_edit"></mat-icon>
           </button>
-          <button mat-icon-button color="warn" matTooltip="Eliminar" aria-label="delete icon">
-            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete"></mat-icon>
+          <button mat-icon-button color="warn" matTooltip="Eliminar" aria-label="delete icon"
+            (click)="delete(skill.id)">
+            <mat-icon class="material-icons-two-tone" aria-hidden="false" aria-label="icon" fontIcon="delete_outline">
+            </mat-icon>
           </button>
         </div>
       </mat-card>
-    </div>
-
-    <div *ngIf="toggleState()" class="icon">
-      <button mat-icon-button matTooltip="Agregar" color="primary" aria-label="add cirle icon">
-        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle"></mat-icon>
-      </button>
     </div>
     <mat-divider></mat-divider>
 </section>

@@ -1,0 +1,36 @@
+<div mat-dialog-content>
+  <h1 mat-dialog-title>Agregar Skill</h1>
+  <form class="form d-flex flex-column mb-2" class="form" [formGroup]="form" (ngSubmit)="onAdd($event)">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre de Skill</mat-label>
+      <input type="name" matInput formControlName="name" placeholder="Ej.: Spring Boot" [(ngModel)]="name">
+      <mat-icon matSuffix>badge</mat-icon>
+      <mat-error *ngIf="Name?.hasError('required')">
+        El nombre es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Porcentaje de la Skill</mat-label>
+      <input type="number" matInput formControlName="percent" placeholder="Ej.: 65" value="" [(ngModel)]="percent">
+      <mat-icon matSuffix>percent</mat-icon>
+      <mat-error *ngIf="Percent?.hasError('required')">
+        El valor es <strong>requerido</strong>
+      </mat-error>
+      <mat-error *ngIf="Percent?.errors && !Percent?.hasError('required')">
+        Solo valores del <strong>0 al 100</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Url de la imagen</mat-label>
+      <input matInput formControlName="urlImage" placeholder="http:" value="" [(ngModel)]="urlImage">
+      <mat-icon matSuffix>link</mat-icon>
+    </mat-form-field>
+
+    <mat-dialog-actions class="d-flex justify-content-around buttons">
+      <button mat-raised-button color="primary">Agregar</button>
+      <button mat-raised-button color="accent" mat-dialog-close routerLink="">Cerrar</button>
+    </mat-dialog-actions>
+  </form>
+</div>

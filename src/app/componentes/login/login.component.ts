@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Skill } from 'src/app/models/skill';
+import { Router } from '@angular/router';
 import { DialogService } from 'src/app/services/dialog.service';
+
 
 @Component({
   selector: 'app-login',
@@ -12,21 +14,21 @@ import { DialogService } from 'src/app/services/dialog.service';
 
 export class LoginComponent implements OnInit {
 
-  email = '';
-  password = '';
+  email: string = '';
+  password: string = '';
   form: any = FormGroup;
   isAnimation: boolean = false;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private ruta: Router, private dialogService: DialogService) { 
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private route: Router, private dialogService: DialogService) { 
 
     //*Creamos el grupo de controles para el formulario de login
       this.form = this.formBuilder.group(
         {
           email:['', [Validators.required, Validators.email]],
-          password:['',[Validators.required, Validators.minLength(8)]],
-          deviceId: [""],
-          deviceType: [""],
-          notificationToken: [""]
+          password:['',[Validators.required, Validators.minLength(8)]]
+          // deviceId: [""],
+          // deviceType: [""],
+          // notificationToken: [""]
       })
   }
 
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
     return this.form.get("password");
   }
  
-  get Mail(){
+  get Email(){
    return this.form.get("email");
   }
 
@@ -50,12 +52,12 @@ export class LoginComponent implements OnInit {
     return this.Password?.touched && this.Password.valid;
   }
 
-  get MailInvalid() {
-    return this.Mail?.touched && !this.Mail?.valid;
+  get EmailInvalid() {
+    return this.Email?.touched && !this.Email?.valid;
   }
 
-  get MailValid(){
-    return this.Mail?.touched && this.Mail.valid;
+  get EmailValid(){
+    return this.Email?.touched && this.Email.valid;
   }
 
   onEnviar(event: Event){
@@ -68,7 +70,9 @@ export class LoginComponent implements OnInit {
       //* También podríamos ejecutar alguna lógica extra
       this.authService.iniciarSesion(this.form.value).subscribe(data => {
         console.log("Data: " + JSON.stringify(data.token));
-        // this.ruta.navigate(['/porfolio'])
+        this.dialogService.closeDialog();
+        this.route.navigate([''])
+        window.location.reload();
       })
       // alert("Todo salio bien ¡Enviar formuario!")
     }else{
