@@ -22,11 +22,19 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
+    <!-- <mat-form-field appearance="outline" class="full-width">
       <mat-label>Url de la imagen</mat-label>
       <input matInput formControlName="urlImage" placeholder="http:" value="" [(ngModel)]="urlImage">
       <mat-icon matSuffix>link</mat-icon>
-    </mat-form-field>
+    </mat-form-field> -->
+
+    <div>
+      <label for="image">Seleccione una imagen</label>
+      <input type="file" class="form-control" id="imagen" name="imagen" formControlName="urlImage" [(ngModel)]="urlImage" [ngClass]="{'is-invalid': UrlImageInvalid, 'is-valid': UrlImageValid}" (change)="uploadImage($event)" accept=".jpg, .png">
+      <div *ngIf="UrlImage?.errors && UrlImage?.touched">
+        <p *ngIf="UrlImage?.hasError('required')" class="error">Debe seleccionar una imagen</p>
+      </div>
+    </div>
 
     <mat-dialog-actions class="d-flex justify-content-around buttons">
       <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="onUpdate($event)">Guardar</button>

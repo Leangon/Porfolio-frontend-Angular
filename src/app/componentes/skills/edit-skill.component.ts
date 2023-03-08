@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Skill } from 'src/app/models/skill';
+import { ImageService } from 'src/app/services/image.service';
 import { PorfolioService } from 'src/app/services/porfolio.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class EditSkillComponent {
 
   form: any = FormGroup;
 
-  constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private route: Router, public dialogRef: MatDialogRef<EditSkillComponent>, @Inject(MAT_DIALOG_DATA) public data: Skill) {
+  constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private route: Router, public dialogRef: MatDialogRef<EditSkillComponent>, @Inject(MAT_DIALOG_DATA) public data: Skill, private imageService: ImageService) {
     
     this.form = this.formBuilder.group(
       {
@@ -49,6 +50,7 @@ export class EditSkillComponent {
 
   onUpdate(event: Event): void {
     event.preventDefault;
+    this.urlImage = this.imageService.url;
     
     if (this.form.valid) {
       let skillUp = new Skill(this.name, this.urlImage, this.percent, this.persona.id);
@@ -64,11 +66,28 @@ export class EditSkillComponent {
     }
   }
 
+  uploadImage(event: any){
+    // const name = `skill_${nameParam}`
+    this.imageService.uploadImage(event)
+  }
+
   get Name() {
     return this.form.get("name");
   }
 
   get Percent() {
     return this.form.get("percent");
+  }
+
+  get UrlImage() {
+    return this.form.get("urlImage");
+  }
+
+  get UrlImageInvalid(){
+    return this.UrlImage?.touched && !this.UrlImage?.valid;
+  }
+
+  get UrlImageValid(){
+    return this.UrlImage?.touched && this.UrlImage.valid;
   }
 }

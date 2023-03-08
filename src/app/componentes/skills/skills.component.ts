@@ -31,8 +31,7 @@ export class SkillsComponent implements OnInit {
         this.isChecked = data;
       }
     );
-
-    console.log(`Este es toggle ${this.isChecked}`);
+    // console.log(`Este es toggle ${this.isChecked}`);
   }
 
   toggleState() {

@@ -16,7 +16,7 @@
     </div>
     <div class="skills__line">
       <mat-card class="skills__box" *ngFor="let skill of skillsList">
-        <ul>
+        <ul class= "skills__list">
           <li class="skills__img"><img [src]="skill.urlImage"></li>
           <li class="skills__name">{{skill.name}}</li>
         </ul>

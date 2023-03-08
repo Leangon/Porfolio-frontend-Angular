@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Skill } from 'src/app/models/skill';
+import { ImageService } from 'src/app/services/image.service';
 import { PorfolioService } from 'src/app/services/porfolio.service';
 
 @Component({
@@ -21,12 +22,12 @@ export class NewSkillComponent implements OnInit{
 
   form: any = FormGroup;
 
-  constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private route: Router) {
+  constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private route: Router, public imageService: ImageService) {
     
     this.form = this.formBuilder.group(
       {
         name:['', [Validators.required, Validators.minLength(2)]],
-        urlImage:['', [Validators.required, Validators.minLength(1)]],
+        urlImage:['', [Validators.required]],
         percent: ['', [Validators.required, Validators.min(0) ,Validators.max(100)]]
       }
     )
@@ -43,12 +44,13 @@ export class NewSkillComponent implements OnInit{
 
   onAdd(event: Event): void {
     event.preventDefault;
+    this.urlImage = this.imageService.url;
 
     if (this.form.valid) {
       // console.log(this.form.valid);
       // console.log(this.form.value);
       const skill = new Skill(this.name, this.urlImage, this.percent, this.persona.id);
-      // console.log(skill.persona.id);
+      console.log(skill);
       this.porfolioService.saveSkill(skill).subscribe(
         date => {
           alert("Experiencia añadida");
@@ -59,11 +61,28 @@ export class NewSkillComponent implements OnInit{
     }
   }
 
+  uploadImage(event: any){
+    // const name = nameParam;
+    this.imageService.uploadImage(event)
+  }
+
   get Name() {
     return this.form.get("name");
   }
 
   get Percent() {
     return this.form.get("percent");
+  }
+
+  get UrlImage() {
+    return this.form.get("urlImage");
+  }
+
+  get UrlImageInvalid(){
+    return this.UrlImage?.touched && !this.UrlImage?.valid;
+  }
+
+  get UrlImageValid(){
+    return this.UrlImage?.touched && this.UrlImage.valid;
   }
 }

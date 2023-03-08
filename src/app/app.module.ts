@@ -19,6 +19,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { environment } from "../environments/environment";
+import { provideStorage, getStorage } from "@angular/fire/storage";
+
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -79,6 +83,8 @@ import { EditSkillComponent } from './componentes/skills/edit-skill.component';
     MatTooltipModule,
     MatIconModule,
     MatButtonModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
     PopoverModule.forRoot(),
     TooltipModule.forRoot(),
     AccordionModule.forRoot(),
