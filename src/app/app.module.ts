@@ -44,7 +44,7 @@ import { NewSkillComponent } from './componentes/skills/new-skill.component';
 import { InterceptorService } from './services/interceptor.service';
 import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
 import { EditSkillComponent } from './componentes/skills/edit-skill.component';
-
+import { ProfileEditComponent } from './componentes/profile/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,8 @@ import { EditSkillComponent } from './componentes/skills/edit-skill.component';
     BtnGoupComponent,
     NewSkillComponent,
     PorfolioComponent,
-    EditSkillComponent
+    EditSkillComponent,
+    ProfileEditComponent
   ],
  
   imports: [

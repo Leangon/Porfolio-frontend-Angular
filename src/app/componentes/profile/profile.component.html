@@ -32,8 +32,8 @@
       </ul>
     </div>
 
-    <div class="title__img col-3">
-      <img class="img-fluid rounded-circle border border-info" src={{persona.urlImage}}>
+    <div class="title__img col-3 rounded-circle">
+      <img class="img-fluid rounded-circle" src={{persona.urlImage}}>
       <!-- <div *ngIf="toggleState()" class="icon">
         <i class="fa-thin fa-pen-to-square"></i>
         <i class="fa-thin fa-trash"></i>
@@ -48,12 +48,12 @@
       <p class="about__paragraph">{{persona.aboutMe}}</p>
       <!-- <p class="about__paragraph">{{miPorfolio.about.p2}}</p> -->
       <div *ngIf="isChecked" class="icon">
-          <button mat-icon-button matTooltip="Editar" aria-label="Example fab with a heart icon">
+          <button mat-icon-button matTooltip="Editar" aria-label="Example fab with a heart icon" (click)="openDialogEditPerson(persona.id)">
             <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="drive_file_rename_outline"></mat-icon>
           </button>
-          <button mat-icon-button color="warn" matTooltip="Eliminar" aria-label="Example fab with a heart icon">
+          <!-- <button mat-icon-button color="warn" matTooltip="Eliminar" aria-label="Example fab with a heart icon">
             <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete"></mat-icon>
-          </button>
+          </button> -->
         </div>
       <mat-divider></mat-divider>
   </div>

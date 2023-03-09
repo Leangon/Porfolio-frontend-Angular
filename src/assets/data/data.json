@@ -1,13 +1,17 @@
 {
-    "nombre": "Leandro González",
-    "titulo": "Hola, mi nombre es Leandro González y construyo paginas web",
-    "discription": "Soy un desarrollador full stack. Actualmente estoy trabajando en un proyecto de Oracle ONE en Alura Latam y también estoy estudiando en Arg. programa. Me encanta aprender nuevas tecnologías y me gusta estar siempre al día en cuanto a las últimas tendencias en el desarrollo de aplicaciones",
-    "image": "https://scontent.faep9-1.fna.fbcdn.net/v/t1.6435-9/141324792_10223874342077599_2257299615646869453_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kBBYjNaypO8AX_s2jy2&_nc_ht=scontent.faep9-1.fna&oh=00_AfAjJi-mM18g0r8VskLa83c5CuuruKk5hI3nETDrbtLJCg&oe=640FDB48",
-    "about": {
-        "p1": "En 2021 comencé mi carrera profesional como desarrollador web. Soy autodidacta y me gusta aprender constantemente. He desarrollado varios proyectos web independientes y actualmente trabajo en DevelopFit. Me encanta trabajar en proyectos interesantes y desafiantes. Siempre estoy buscando nuevas oportunidades para aprender y crecer en mi carrera como desarrollador web. Me encanta trabajar en equipo y colaborar con mis compañeros para producir aplicaciones de alta calidad.",
-        "p2": "En mi tiempo libre, me gusta leer y aprender sobre tecnología y desarrollo de aplicaciones. También me gusta salir con amigos y disfrutar de la vida. Estoy emocionado de seguir creciendo y espero tener la oportunidad de trabajar en proyectos interesantes y desafiantes en el futuro."
-    },
-    "education":[
+    "persona": [
+        {
+            "nombre": "Leandro González",
+            "titulo": "Hola, mi nombre es Leandro González y construyo paginas web",
+            "discription": "Soy un desarrollador full stack. Actualmente estoy trabajando en un proyecto de Oracle ONE en Alura Latam y también estoy estudiando en Arg. programa. Me encanta aprender nuevas tecnologías y me gusta estar siempre al día en cuanto a las últimas tendencias en el desarrollo de aplicaciones",
+            "image": "https://scontent.faep9-1.fna.fbcdn.net/v/t1.6435-9/141324792_10223874342077599_2257299615646869453_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kBBYjNaypO8AX_s2jy2&_nc_ht=scontent.faep9-1.fna&oh=00_AfAjJi-mM18g0r8VskLa83c5CuuruKk5hI3nETDrbtLJCg&oe=640FDB48",
+            "about": {
+                "p1": "En 2021 comencé mi carrera profesional como desarrollador web. Soy autodidacta y me gusta aprender constantemente. He desarrollado varios proyectos web independientes y actualmente trabajo en DevelopFit. Me encanta trabajar en proyectos interesantes y desafiantes. Siempre estoy buscando nuevas oportunidades para aprender y crecer en mi carrera como desarrollador web. Me encanta trabajar en equipo y colaborar con mis compañeros para producir aplicaciones de alta calidad.",
+                "p2": "En mi tiempo libre, me gusta leer y aprender sobre tecnología y desarrollo de aplicaciones. También me gusta salir con amigos y disfrutar de la vida. Estoy emocionado de seguir creciendo y espero tener la oportunidad de trabajar en proyectos interesantes y desafiantes en el futuro."
+            }
+        }
+    ],
+    "education": [
         {
             "universidad": "Universidad de general Sarmiento",
             "title": "Lic. en economía",
@@ -68,11 +72,11 @@
             "porcentaje": 70
         }
     ],
-    "experiencia":[
+    "experiencia": [
         {
             "id": 1,
             "url_logo": "../assets/images/develop.png",
-            "empresa":"developFit",
+            "empresa": "developFit",
             "puesto": "desarrollador full stack",
             "es_trabajo_actual": true,
             "descripcion": "desarrollador full stack junior",
@@ -82,7 +86,7 @@
         {
             "id": 2,
             "url_logo": "../assets/images/papier.png",
-            "empresa":"Papierttei",
+            "empresa": "Papierttei",
             "puesto": "Analista de logística",
             "es_trabajo_actual": false,
             "descripcion": "Analista de logìstica, generación de KPI, planilla de devoluciones e indicadores de desempeño de vendedores, facturación, créditos",
@@ -92,7 +96,7 @@
         {
             "id": 3,
             "url_logo": "../assets/images/walmart-logo.png",
-            "empresa":"Walmart",
+            "empresa": "Walmart",
             "puesto": "Administrativo",
             "es_trabajo_actual": false,
             "descripcion": "Administrativo de ventas e inventarios, proceso de perdidas, generación de reporter de ventas y gannacias",

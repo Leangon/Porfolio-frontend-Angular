@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Skill } from 'src/app/models/skill';
 import { ImageService } from 'src/app/services/image.service';
 import { PorfolioService } from 'src/app/services/porfolio.service';
@@ -30,7 +30,7 @@ export class EditSkillComponent {
     this.form = this.formBuilder.group(
       {
         name:['', [Validators.required, Validators.minLength(2)]],
-        urlImage:['', [Validators.required, Validators.minLength(1)]],
+        urlImage:['', [Validators.required]],
         percent: ['', [Validators.required, Validators.min(0) ,Validators.max(100)]]
       }
     )
@@ -42,7 +42,7 @@ export class EditSkillComponent {
     this.urlImage = this.data.urlImage;
     this.percent = this.data.percent;
     
-    this.porfolioService.getPerson().subscribe(data => {
+    this.porfolioService.getPersonList().subscribe(data => {
       this.datosperson = data[0];
       this.persona = {id: this.datosperson.id};
     })

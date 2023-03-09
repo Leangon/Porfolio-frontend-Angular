@@ -29,7 +29,7 @@ export class MenuComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.datosPorfolio.getPerson().subscribe(data =>{
+    this.datosPorfolio.getPersonList().subscribe(data =>{
       this.miPorfolio = data;
     }); 
     if (this.auth.logIn) {

@@ -56,7 +56,7 @@ export class SkillsComponent implements OnInit {
     },err =>{
       alert('Error al traer skill');
     })
-    
+
   }
 
   delete(id: number): void {

@@ -1,0 +1,60 @@
+<div mat-dialog-content *ngIf="data">
+    <h1 mat-dialog-title>Agregar Skill</h1>
+    <form class="d-flex flex-column mb-2" class="form" [formGroup]="form" (ngSubmit)="onUpdate($event)">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Titulo</mat-label>
+        <textarea matInput type="text" matInput formControlName="title" placeholder="Hola, mi nombre es Leandro..." [(ngModel)]="title"></textarea>
+        <mat-icon matSuffix>title</mat-icon>
+        <mat-error *ngIf="Title?.hasError('required')">
+          El titulo es <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="Title?.errors && !Title?.hasError('required')">
+            Debe contener al menos <strong>10 caracteres</strong>
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Descripció</mat-label>
+        <textarea rows="4" matInput type="text" matInput formControlName="description" placeholder="Soy un desarrollador..." value="" [(ngModel)]="description"></textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-error *ngIf="Description?.hasError('required')">
+          El valor es <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="Description?.errors && !Description?.hasError('required')">
+            Debe contener al menos <strong>50 caracteres</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>About me</mat-label>
+        <textarea rows="10" matInput type="text" matInput formControlName="aboutMe" placeholder="Hello" [(ngModel)]="aboutMe"></textarea>
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="AboutMe?.hasError('required')">
+          El about me es <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="AboutMe?.errors && !AboutMe?.hasError('required')">
+            Debe contener al menos <strong>50 caracteres</strong>
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Url de la imagen</mat-label>
+        <input matInput formControlName="urlImage" placeholder="http:" value="" [(ngModel)]="urlImage">
+        <mat-icon matSuffix>link</mat-icon>
+      </mat-form-field> -->
+  
+      <div>
+        <label for="image">Seleccione una imagen</label>
+        <input type="file" class="form-control" id="imagen" name="imagen" formControlName="urlImage" [(ngModel)]="urlImage" [ngClass]="{'is-invalid': UrlImageInvalid, 'is-valid': UrlImageValid}" (change)="uploadImage($event)" accept=".jpg, .png">
+        <div *ngIf="UrlImage?.errors && UrlImage?.touched">
+          <p *ngIf="UrlImage?.hasError('required')" class="error">Debe seleccionar una imagen</p>
+        </div>
+      </div>
+  
+      <mat-dialog-actions class="d-flex justify-content-around buttons">
+        <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="onUpdate($event)">Guardar</button>
+        <button mat-raised-button color="accent" mat-dialog-close routerLink="">Volver</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+  

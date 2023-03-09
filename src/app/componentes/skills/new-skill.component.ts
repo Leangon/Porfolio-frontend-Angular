@@ -34,7 +34,7 @@ export class NewSkillComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.porfolioService.getPerson().subscribe(data => {
+    this.porfolioService.getPersonList().subscribe(data => {
       this.datosperson = data[0];
       this.persona = {id: this.datosperson.id};
       // console.log(this.datosperson);
