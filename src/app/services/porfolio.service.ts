@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
+import { Education } from '../models/education';
 import { Experience } from '../models/experience';
 import { Persona } from '../models/persona';
 import { Skill } from '../models/skill';
@@ -11,6 +12,7 @@ import { Skill } from '../models/skill';
 export class PorfolioService {
 
   constructor(private http: HttpClient) { }
+
 
   //* Person
   getPersonList(): Observable<Persona[]>{
@@ -24,6 +26,7 @@ export class PorfolioService {
   getPersonDetail(id: number): Observable<Persona>{
     return this.http.get<Persona>(`/api/personaFind/${id}`)
   }
+
 
   //* Skills
   getSkills(): Observable<Skill[]>{
@@ -46,6 +49,7 @@ export class PorfolioService {
     return this.http.delete<Skill>(`/api/skillDelete/${id}`)
   }
 
+
   //* Experiences
   getExperiences(): Observable<Experience[]>{
     return this.http.get<Experience[]>('/api/experienceList');
@@ -65,6 +69,28 @@ export class PorfolioService {
 
   deleteExperience(id: number): Observable<Experience>{
     return this.http.delete<Experience>(`/api/experienceDelete/${id}`)
+  }
+
+
+  //*Education
+  getEducation(): Observable<Education[]>{
+    return this.http.get<Education[]>('/api/educationList');
+  }
+
+  saveEducation(education: Education): Observable<Education>{
+    return this.http.post<Education>('/api/educationNew', education);
+  }
+
+  detailEducation(id: number): Observable<Education>{
+    return this.http.get<Education>(`/api/educationFind/${id}`);
+  }
+
+  updateEducation(id: number, education: Education): Observable<Education>{
+    return this.http.put<Education>(`/api/educationUpdate/${id}`, education);
+  }
+
+  deleteEducation(id: number): Observable<Education>{
+    return this.http.delete<Education>(`/api/educationDelete/${id}`);
   }
   
 }

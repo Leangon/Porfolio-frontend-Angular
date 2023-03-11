@@ -1,33 +1,21 @@
 <div mat-dialog-content>
-    <h1 mat-dialog-title>Editar experiencia</h1>
-    <form class="form d-flex flex-column mb-2" class="form" [formGroup]="form" (ngSubmit)="onUpDate($event, data.id)">
+    <h1 mat-dialog-title>Agregar educación</h1>
+    <form class="form d-flex flex-column mb-2" class="form" [formGroup]="form" (ngSubmit)="onUpdate($event, data.id)">
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Nombre de la empresa:</mat-label>
-        <input type="name" matInput formControlName="company" placeholder="Ej.: Globant" [(ngModel)]="company">
+        <mat-label>Nombre de Institución:</mat-label>
+        <input type="name" matInput formControlName="university" placeholder="Ej.: UTN" [(ngModel)]="university">
         <mat-icon matSuffix>apartment</mat-icon>
-        <mat-error *ngIf="Company?.hasError('required')">
-          El nombre de la empresa es <strong>requerido</strong>
+        <mat-error *ngIf="University?.hasError('required')">
+          El nombre de la institución es <strong>requerido</strong>
         </mat-error>
       </mat-form-field>
   
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Puesto:</mat-label>
-        <input type="text" matInput formControlName="position" placeholder="Ej.: Developer Full Stack" value="" [(ngModel)]="position">
+        <mat-label>Titulo académico:</mat-label>
+        <input type="text" matInput formControlName="title" placeholder="Ej.: Licenciado en sistemas" value="" [(ngModel)]="title">
         <mat-icon matSuffix>supervisor_account</mat-icon>
-        <mat-error *ngIf="Position?.hasError('required')">
-          El nombre del puesto es <strong>requerido</strong>
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Descripción:</mat-label>
-        <textarea rows="4" type="text" matInput formControlName="description" placeholder="Ej.:" value="" [(ngModel)]="description"></textarea>
-        <mat-icon matSuffix>description</mat-icon>
-        <mat-error *ngIf="Description?.hasError('required')">
-          La descripción es <strong>requerida</strong>
-        </mat-error>
-        <mat-error *ngIf="Description?.errors && !Description?.hasError('required')">
-          Ingrese al menos <strong>15 caracteres</strong>
+        <mat-error *ngIf="Title?.hasError('required')">
+          El nombre del título es <strong>requerido</strong>
         </mat-error>
       </mat-form-field>
 
@@ -38,7 +26,7 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="StartDate?.hasError('required')">
-            La fecha es <strong>requerida</strong>
+          La fecha es <strong>requerida</strong>
         </mat-error>
       </mat-form-field>
 
@@ -62,9 +50,6 @@
       <div>
         <label for="image">Seleccione una imagen</label>
         <input type="file" class="form-control" id="imagen" name="imagen" (change)="uploadImage($event)" accept=".jpg, .png">
-        <!-- <div *ngIf="UrlLogo?.errors && UrlLogo?.touched">
-          <p *ngIf="UrlLogo?.hasError('required')" class="error">Debe seleccionar una imagen</p>
-        </div> -->
       </div>
   
       <mat-dialog-actions class="d-flex justify-content-around buttons">

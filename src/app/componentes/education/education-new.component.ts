@@ -2,23 +2,21 @@ import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Experience } from 'src/app/models/experience';
+import { Education } from 'src/app/models/education';
 import { ImageService } from 'src/app/services/image.service';
 import { PorfolioService } from 'src/app/services/porfolio.service';
 
 @Component({
-  selector: 'app-experience-new',
-  templateUrl: './experience-new.component.html',
-  styleUrls: ['./experience-new.component.css'],
+  selector: 'app-education-new',
+  templateUrl: './education-new.component.html',
+  styleUrls: ['./education-new.component.css'],
   providers: [DatePipe],
 })
-export class ExperienceNewComponent {
-
+export class EducationNewComponent {
   datosperson: any;
 
-  company: string;
-  position: string;
-  description: string;
+  university: string;
+  title: string;
   startDate: string;
   endDate: string;
   urlLogo: string;
@@ -30,13 +28,12 @@ export class ExperienceNewComponent {
   dateEnd: Date;
   form: any = FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, router: Router, private imageService: ImageService, private datePipe: DatePipe ) {
+  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private router: Router, private imageService: ImageService, private datePipe: DatePipe ) {
 
     this.form = this.formBuilder.group(
       {
-        company: ['', [Validators.required]],
-        position: ['', [Validators.required]],
-        description: ['', [Validators.required, Validators.minLength(15)]],
+        university: ['', [Validators.required]],
+        title: ['', [Validators.required]],
         dateStart: ['', Validators.required],
         dateEnd: ['', Validators.required],
         urlLogo: ['', Validators.required]
@@ -57,16 +54,12 @@ export class ExperienceNewComponent {
   //   return this.datePipe.transform(this.startDate, 'dd/MM/yyyy');
   // }
 
-  get Company() {
-    return this.form.get("company")
+  get University() {
+    return this.form.get("university")
   }
 
-  get Position() {
-    return this.form.get("position")
-  }
-
-  get Description() {
-    return this.form.get("description")
+  get Title() {
+    return this.form.get("title")
   }
 
   get StartDate() {
@@ -97,28 +90,26 @@ export class ExperienceNewComponent {
     if (this.form.valid) {
       const formattedStartDate: string = this.datePipe.transform(this.dateStart, 'dd/MM/yyyy').toString();
       const formattedEndDate: string = this.datePipe.transform(this.dateEnd, 'dd/MM/yyyy').toString();
+
       this.startDate = formattedStartDate;
       this.endDate = formattedEndDate;
       console.log(this.startDate);
-      const experience: Experience = new Experience(this.company, this.position, this.description, this.startDate, this.endDate, this.urlLogo, this.persona.id);
-      console.log(experience);
-      this.porfolioService.saveExperience(experience).subscribe(data => {
-        alert("Experiencia añadida");
+
+      const education: Education = new Education(this.university, this.title, this.urlLogo, this.startDate, this.endDate, this.persona.id);
+      console.log(education);
+      
+      this.porfolioService.saveEducation(education).subscribe(data => {
+        alert("Educacion añadida");
+        this.router.navigate(['']);
         window.location.reload();
       }, err => {
-        alert("Fallo guardar experiencia")
+        alert("Fallo guardar educacion")
       })
     }
   }
 
   uploadImage(event: Event){
     this.imageService.uploadImage(event);
-  }
-  
-  mostrarFecha(){
-    const formattedDate: string = this.datePipe.transform(this.dateStart, 'dd/MM/yyyy');
-  this.startDate = formattedDate.toString();
-  console.log(this.startDate);
   }
 
 }
