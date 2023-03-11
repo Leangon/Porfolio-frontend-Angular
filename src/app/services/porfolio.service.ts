@@ -47,7 +47,7 @@ export class PorfolioService {
   }
 
   //* Experiences
-  getExperience(): Observable<Experience[]>{
+  getExperiences(): Observable<Experience[]>{
     return this.http.get<Experience[]>('/api/experienceList');
   }
 
@@ -60,7 +60,7 @@ export class PorfolioService {
   }
 
   updateExperience(id: number, experience: Experience): Observable<Experience>{
-    return this.http.put<Experience>(`/api/experience/${id}`, experience);
+    return this.http.put<Experience>(`/api/experienceUpdate/${id}`, experience);
   }
 
   deleteExperience(id: number): Observable<Experience>{

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { data } from 'jquery';
-import { DialogService } from 'src/app/services/dialog.service';
 import { PorfolioService } from 'src/app/services/porfolio.service';
 import { ToggleService } from 'src/app/services/toggle.service';
 import { EditSkillComponent } from './edit-skill.component';
@@ -18,7 +16,7 @@ export class SkillsComponent implements OnInit {
   skillsList!: any[];
   isChecked: boolean = false;
 
-  constructor(private porfolioService: PorfolioService, private toggle: ToggleService, private dialog: MatDialog, private router: Router, private dialogService: DialogService) {
+  constructor(private porfolioService: PorfolioService, private toggle: ToggleService, private dialog: MatDialog, private router: Router,) {
    }
 
   ngOnInit(): void {
@@ -39,12 +37,12 @@ export class SkillsComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(NewSkillComponent);
     this.router.navigate([{ outlets: { dialog: 'newSkill' } }]);
+    this.dialog.open(NewSkillComponent);
   }
 
   openDialogEdit(id: number): void {
-    this.router.navigate([{ outlets: { dialog: ['editSkill', id]} }]);
+    this.router.navigate([{ outlets: { dialog: ['editSkill', id]}}]);
     this.porfolioService.detailSkill(id).subscribe(datas =>{
       const skill = datas;
       const dialogRef = this.dialog.open(EditSkillComponent, {

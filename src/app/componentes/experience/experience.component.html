@@ -1,29 +1,41 @@
 <section class="experience" id="experience">
-    <h2 class="experience__title">Experiencia laboral</h2>
-    <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <mat-card class="experience__card" *ngFor="let experiencia of experienceList" cdkDrag>
-            <ul class="list-unstyled">
-                <li class="media d-flex">
-                  <img class="mx-3 logo" [src]="experiencia.url_logo" alt="Profile image">
-                  <div class="media-body">
-                    <h2 class="mt-0 mb-1">{{experiencia.empresa}}</h2>
-                    <h3 class="mb-1">{{experiencia.puesto}}</h3>
-                    {{experiencia.descripcion}}
-                    <p><time>{{experiencia.start_date}}</time> - <time>{{experiencia.end_date}}</time></p>
-                  </div>
-                </li>
-            </ul>
-            <div *ngIf="toggleState()" class="icon">
-              <button mat-icon-button matTooltip="Editar" aria-label="edit icon">
-                <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="drive_file_rename_outline"></mat-icon>
-              </button>
-              <button mat-icon-button matTooltip="Eliminar" aria-label="delete icon">
-                <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete"></mat-icon>
-              </button>
-            </div>
-        </mat-card>
-    </div>
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  <h2 class="experience__title">Experiencia laboral</h2>
+  <div *ngIf="toggleState()" class="example-button-row">
+    <button mat-icon-button matTooltip="Agregar experience" aria-label="add cirle icon" color="primary"
+      (click)="openDialogNewExperience()">
+      <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
+      </mat-icon>
+    </button>
+  </div>
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-card class="experience__card" *ngFor="let experience of experienceList" cdkDrag>
+      <mat-card-header>
+        <mat-card-title-group>
+          <img mat-card-sm-image class="me-3 mt-2 logo border" [src]="experience.urlLogo" alt="Profile image">
+          <mat-card-title class="mb-1">{{experience.position}}</mat-card-title>
+          <mat-card-subtitle class="mt-0 mb-1">{{experience.company}}</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{experience.description}}</p>
+        <p><time>{{experience.startDate}}</time> - <time>{{experience.endDate}}</time></p>
+      </mat-card-content>
+
+      <div *ngIf="toggleState()" class="icon">
+        <button mat-icon-button matTooltip="Editar" color="primary" aria-label="edit icon"
+          (click)="openDialogEdit(experience.id)">
+          <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon"
+            fontIcon="drive_file_rename_outline"></mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Eliminar" color="warn" aria-label="delete icon"
+          (click)="onDelete(experience.id)">
+          <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete">
+          </mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
       style="margin:auto;background:none;display:block;" width="200px" height="200px" viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid">
       <circle cx="84" cy="50" r="10" fill="#e15b64">
@@ -110,11 +122,5 @@
         </g>
       </svg>
     </div> -->
-    <div *ngIf="toggleState()" class="example-button-row">
-      <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon">
-        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
-        </mat-icon>
-      </button>
-    </div>
-    <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 </section>

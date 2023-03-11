@@ -1,0 +1,76 @@
+<div mat-dialog-content>
+    <h1 mat-dialog-title>Editar experiencia</h1>
+    <form class="form d-flex flex-column mb-2" class="form" [formGroup]="form" (ngSubmit)="onUpDate($event, data.id)">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Nombre de la empresa:</mat-label>
+        <input type="name" matInput formControlName="company" placeholder="Ej.: Globant" [(ngModel)]="company">
+        <mat-icon matSuffix>apartment</mat-icon>
+        <mat-error *ngIf="Company?.hasError('required')">
+          El nombre de la empresa es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Puesto:</mat-label>
+        <input type="text" matInput formControlName="position" placeholder="Ej.: Developer Full Stack" value="" [(ngModel)]="position">
+        <mat-icon matSuffix>supervisor_account</mat-icon>
+        <mat-error *ngIf="Position?.hasError('required')">
+          El nombre del puesto es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Descripción:</mat-label>
+        <textarea rows="4" type="text" matInput formControlName="description" placeholder="Ej.:" value="" [(ngModel)]="description"></textarea>
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-error *ngIf="Description?.hasError('required')">
+          La descripción es <strong>requerida</strong>
+        </mat-error>
+        <mat-error *ngIf="Description?.errors && !Description?.hasError('required')">
+          Ingrese al menos <strong>15 caracteres</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field color="accent" class="full-width" appearance="fill">
+        <mat-label>Seleccione una fecha de inicio</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateStart" [(ngModel)]="dateStart">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="StartDate?.hasError('required')">
+            La fecha es <strong>requerida</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field color="accent" class="full-width" appearance="fill">
+        <mat-label>Seleccione una fecha de finalización</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="dateEnd" [(ngModel)]="dateEnd">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error *ngIf="EndDate?.hasError('required')">
+            La fecha es <strong>requerida</strong>
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Url de la imagen</mat-label>
+        <input matInput formControlName="urlImage" placeholder="http:" value="" [(ngModel)]="urlImage">
+        <mat-icon matSuffix>link</mat-icon>
+      </mat-form-field> -->
+  
+      <div>
+        <label for="image">Seleccione una imagen</label>
+        <input type="file" class="form-control" id="imagen" name="imagen" (change)="uploadImage($event)" accept=".jpg, .png">
+        <!-- <div *ngIf="UrlLogo?.errors && UrlLogo?.touched">
+          <p *ngIf="UrlLogo?.hasError('required')" class="error">Debe seleccionar una imagen</p>
+        </div> -->
+      </div>
+  
+      <mat-dialog-actions class="d-flex justify-content-around buttons">
+        <button mat-raised-button color="primary">Agregar</button>
+        <button mat-raised-button color="accent" mat-dialog-close routerLink="">Cerrar</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+

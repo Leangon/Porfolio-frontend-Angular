@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //ngx-bootstrap
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCardModule } from '@angular/material/card';
@@ -18,6 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { environment } from "../environments/environment";
@@ -45,6 +47,8 @@ import { InterceptorService } from './services/interceptor.service';
 import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
 import { EditSkillComponent } from './componentes/skills/edit-skill.component';
 import { ProfileEditComponent } from './componentes/profile/profile-edit.component';
+import { ExperienceEditComponent } from './componentes/experience/experience-edit.component';
+import { ExperienceNewComponent } from './componentes/experience/experience-new.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,9 @@ import { ProfileEditComponent } from './componentes/profile/profile-edit.compone
     NewSkillComponent,
     PorfolioComponent,
     EditSkillComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    ExperienceEditComponent,
+    ExperienceNewComponent
   ],
  
   imports: [
@@ -84,6 +90,8 @@ import { ProfileEditComponent } from './componentes/profile/profile-edit.compone
     MatTooltipModule,
     MatIconModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
     PopoverModule.forRoot(),
@@ -92,7 +100,8 @@ import { ProfileEditComponent } from './componentes/profile/profile-edit.compone
     CollapseModule.forRoot()
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
+    {provide: MAT_DATE_LOCALE, useValue: 'es-AR'}
   ],
   bootstrap: [AppComponent]
 })

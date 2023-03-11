@@ -6,7 +6,7 @@ import { Storage, ref, uploadBytes, getDownloadURL, listAll } from '@angular/fir
   providedIn: 'root'
 })
 export class ImageService {
-  url: string = "";
+  url: string = null;
 
   constructor(private storage: Storage) { }
 

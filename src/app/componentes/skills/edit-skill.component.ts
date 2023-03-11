@@ -26,12 +26,12 @@ export class EditSkillComponent {
   form: any = FormGroup;
 
   constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private route: Router, public dialogRef: MatDialogRef<EditSkillComponent>, @Inject(MAT_DIALOG_DATA) public data: Skill, private imageService: ImageService) {
-    
+
     this.form = this.formBuilder.group(
       {
-        name:['', [Validators.required, Validators.minLength(2)]],
-        urlImage:['', [Validators.required]],
-        percent: ['', [Validators.required, Validators.min(0) ,Validators.max(100)]]
+        name: ['', [Validators.required, Validators.minLength(2)]],
+        urlImage: ['', [Validators.required]],
+        percent: ['', [Validators.required, Validators.min(0), Validators.max(100)]]
       }
     )
   }
@@ -41,17 +41,17 @@ export class EditSkillComponent {
     this.name = this.data.name;
     this.urlImage = this.data.urlImage;
     this.percent = this.data.percent;
-    
+
     this.porfolioService.getPersonList().subscribe(data => {
       this.datosperson = data[0];
-      this.persona = {id: this.datosperson.id};
+      this.persona = { id: this.datosperson.id };
     })
   }
 
   onUpdate(event: Event): void {
     event.preventDefault;
     this.urlImage = this.imageService.url;
-    
+
     if (this.form.valid) {
       let skillUp = new Skill(this.name, this.urlImage, this.percent, this.persona.id);
       console.log(skillUp);
@@ -66,7 +66,7 @@ export class EditSkillComponent {
     }
   }
 
-  uploadImage(event: any){
+  uploadImage(event: any) {
     // const name = `skill_${nameParam}`
     this.imageService.uploadImage(event)
   }
@@ -83,11 +83,11 @@ export class EditSkillComponent {
     return this.form.get("urlImage");
   }
 
-  get UrlImageInvalid(){
+  get UrlImageInvalid() {
     return this.UrlImage?.touched && !this.UrlImage?.valid;
   }
 
-  get UrlImageValid(){
+  get UrlImageValid() {
     return this.UrlImage?.touched && this.UrlImage.valid;
   }
 }
