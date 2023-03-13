@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { Education } from '../models/education';
 import { Experience } from '../models/experience';
 import { Persona } from '../models/persona';
+import { Proyects } from '../models/proyects';
 import { Skill } from '../models/skill';
 
 @Injectable({
@@ -91,6 +92,27 @@ export class PorfolioService {
 
   deleteEducation(id: number): Observable<Education>{
     return this.http.delete<Education>(`/api/educationDelete/${id}`);
+  }
+
+  //*Proyects
+  getProyect(): Observable<Proyects[]>{
+    return this.http.get<Proyects[]>('/api/proyectsList');
+  }
+
+  saveProyect(proyect: Proyects): Observable<Proyects>{
+    return this.http.post<Proyects>('/api/proyectNew', proyect);
+  }
+
+  detailProyect(id: number): Observable<Proyects>{
+    return this.http.get<Proyects>(`/api/proyectFind/${id}`);
+  }
+
+  updateProyect(id: number, proyect: Proyects): Observable<Proyects>{
+    return this.http.put<Proyects>(`/api/proyectUpdate/${id}`, proyect);
+  }
+
+  deleteProyect(id: number): Observable<Proyects>{
+    return this.http.delete<Proyects>(`/api/proyectDelete/${id}`);
   }
   
 }

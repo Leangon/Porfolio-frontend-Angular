@@ -1,116 +1,38 @@
 <section class="experience" id="xp">
-    <h2 class="experience__section__title">Proyects</h2>
-
-    <div id="carouselExampleIndicators" class="carousel carousel-dark slide carousel-fade" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-          aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-          aria-label="Slide 4"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="experience__box">
-            <!-- Agregar logo/captura de pantalla del proyecto -->
-            <img class="experience__img" src="../assets/images/decod_print.png">
-            <div class="experience__info">
-              <h2 class="experience__title">Encriptador de texto</h2>
-              <h3 class="experience__text">Challenge Alura Codificador </h3>
-              <div class="experience__description">
-                <!-- Enlace del proyecto en Github o GithubPages -->
-                <span class="experience__repo"><a
-                    href="https://github.com/alura-challenges/challenge-one-encriptador-latam" target=_blank><button
-                      class="experience__boton--repo">Repositório</button></a></span>
-                <span class="experience__demo"><a href="" target=_blank><button class="experience__boton--demo">Ver
-                      demo</button></a></span>
-              </div>
+  <h2 class="experience__section__title">Proyects</h2>
+  <div *ngIf="toggleState()" class="example-button-row">
+    <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon"
+      (click)="openDialogNewProyect()">
+      <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
+      </mat-icon>
+    </button>
+  </div>
+  <carousel>
+    <slide *ngFor="let proyect of proyectsList">
+      <img class="experience__img" [src]="proyect.urlImage">
+      <div class="carousel-caption">
+        <!-- Agregar logo/captura de pantalla del proyecto -->
+        <div class="experience__info text-black">
+          <h2 class="experience__title">{{proyect.name}}</h2>
+          <h3 class="experience__text">{{proyect.description}}</h3>
+          <div class="experience__description">
+            <!-- Enlace del proyecto en Github o GithubPages -->
+            <a [href]="proyect.urlRepository" mat-fab extended color="primary" target=_blank>Repositório</a>
+            <a [href]="proyect.urlDemo" mat-fab extended color="primary" target=_blank>Ver demo</a>
+            <div *ngIf="toggleState()" class="icon">
+              <button mat-icon-button matTooltip="Editar" aria-label="edit icon" (click)="openDialogEditProyect(proyect.id)">
+                <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon"
+                  fontIcon="drive_file_rename_outline"></mat-icon>
+              </button>
+              <button mat-icon-button matTooltip="Eliminar" aria-label="delete icon" (click)="onDelete(proyect.id)">
+                <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete">
+                </mat-icon>
+              </button>
             </div>
           </div>
-        </div>
 
-        <div class="carousel-item">
-          <div class="experience__box">
-            <!-- Agregar logo/captura de pantalla de tu proyecto -->
-            <img class="experience__img" src="../assets/images/forca_print.png">
-            <div class="experience__info">
-              <h2 class="experience__title">Juego creado con HTML y JavaScript</h2>
-              <h3 class="experience__text">Challenge Oracle </h3>
-              <div class="experience__description">
-                <!-- Enlace del proyecto en Github o GithubPages -->
-                <span class="experience__repo"><a
-                    href="https://github.com/alura-challenges/challenge-one-juego-ahorcado" target=_blank><button
-                      class="experience__boton--repo">Repositório</button></a></span>
-                <span class="experience__demo"><a href="" target=_blank><button class="experience__boton--demo">Ver
-                      demo</button></a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="experience__box">
-            <!-- Agregar logo/captura de pantalla de tu proyecto -->
-            <img class="experience__img" src="../assets/images/secretcode_print.png">
-            <div class="experience__info">
-              <h2 class="experience__title">Encriptador de texto</h2>
-              <h3 class="experience__text">Challenge Oracle </h3>
-              <div class="experience__description">
-                <!-- Enlace del proyecto en Github o GithubPages -->
-                <span class="experience__repo"><a href="https://github.com/Leangon/Encriptador-de-texto"
-                    target=_blank><button class="experience__boton--repo">Repositório</button></a></span>
-                <span class="experience__demo"><a href="https://leangon.github.io/Encriptador-de-texto/"
-                    target=_blank><button class="experience__boton--demo">Ver demo</button></a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="experience__box">
-            <!-- Agregar logo/captura de pantalla del proyecto -->
-            <img class="experience__img" src="../assets/images/forca2_print.png">
-            <div class="experience__info">
-              <h2 class="experience__title">Juego creado con HTML, CSS y JavaScript</h2>
-              <h3 class="experience__text">Challenge Oracle </h3>
-              <div class="experience__description">
-                <!-- Enlace del proyecto en Github o GithubPages -->
-                <span class="experience__repo"><a
-                    href="https://github.com/alura-challenges/challenge-one-juego-ahorcado" target=_blank><button
-                      class="experience__boton--repo">Repositório</button></a></span>
-                <span class="experience__demo"><a href="" target=_blank><button class="experience__boton--demo">Ver
-                      demo</button></a></span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    <div *ngIf="toggleState()" class="icon">
-      <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon">
-        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle"></mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Editar" aria-label="edit icon">
-        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="drive_file_rename_outline"></mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Eliminar" aria-label="delete icon">
-        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete"></mat-icon>
-      </button>
-    </div>
-    
-    <mat-divider></mat-divider>
+    </slide>
+  </carousel>
 </section>

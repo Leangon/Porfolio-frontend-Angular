@@ -6,6 +6,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
@@ -51,6 +52,8 @@ import { ExperienceEditComponent } from './componentes/experience/experience-edi
 import { ExperienceNewComponent } from './componentes/experience/experience-new.component';
 import { EducationNewComponent } from './componentes/education/education-new.component';
 import { EducationEditComponent } from './componentes/education/education-edit.component';
+import { ProyectsNewComponent } from './componentes/projects/proyects-new.component';
+import { ProyectsEditComponent } from './componentes/projects/proyects-edit.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,9 @@ import { EducationEditComponent } from './componentes/education/education-edit.c
     ExperienceEditComponent,
     ExperienceNewComponent,
     EducationNewComponent,
-    EducationEditComponent
+    EducationEditComponent,
+    ProyectsNewComponent,
+    ProyectsEditComponent
   ],
  
   imports: [
@@ -101,7 +106,8 @@ import { EducationEditComponent } from './componentes/education/education-edit.c
     PopoverModule.forRoot(),
     TooltipModule.forRoot(),
     AccordionModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    CarouselModule.forRoot(),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},

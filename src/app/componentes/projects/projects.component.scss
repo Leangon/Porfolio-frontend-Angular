@@ -1,9 +1,5 @@
 /** experiencia */
 
-.carousel-item{
-  transition: transform 2s ease, opacity 1.9s ease-out;
-}
-
 .experience{
     display: flex;
     flex-direction: column;
@@ -25,7 +21,9 @@
 }
 
 .experience__img{
-    width: 60%;
+    
+    height: 500px;
+    width: 750px;
 }
 
 .experience__info{
@@ -46,8 +44,13 @@
     border-radius: 15px;
   }
 
+  a {
+    color: #fff;
+  }
+
   .experience__description{
     display: flex;
+    justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
     width: 100%;

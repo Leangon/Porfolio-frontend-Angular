@@ -9,6 +9,8 @@ import { ExperienceNewComponent } from '../componentes/experience/experience-new
 import { ExperienceEditComponent } from '../componentes/experience/experience-edit.component';
 import { EducationNewComponent } from '../componentes/education/education-new.component';
 import { EducationEditComponent } from '../componentes/education/education-edit.component';
+import { ProyectsEditComponent } from '../componentes/projects/proyects-edit.component';
+import { ProyectsNewComponent } from '../componentes/projects/proyects-new.component';
 
 const routes: Routes = [
   {path: '', component: PorfolioComponent},
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'editExperience/:id', component: ExperienceEditComponent, outlet: 'dialog'},
   {path: 'newEducation', component: EducationNewComponent, outlet: 'dialog'},
   {path: 'editEducation/:id', component: EducationEditComponent, outlet: 'dialog'},
+  {path: 'newProyect', component: ProyectsNewComponent, outlet: 'dialog'},
+  {path: 'editProyect/:id', component: ProyectsEditComponent, outlet: 'dialog'},
   // {path: '**', component: Pagina404Component}
 ];
 

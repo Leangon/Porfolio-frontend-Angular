@@ -5,8 +5,7 @@
       <button 
       mat-icon-button 
       matTooltip="Agregar" 
-      aria-label="add cirle icon" 
-      color="primary" 
+      aria-label="add cirle icon"
       (click)="openDialogNewEducation()">
         <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
         </mat-icon>
@@ -29,12 +28,12 @@
         </ul>
 
         <div *ngIf="toggleState()" class="icon">
-          <button mat-icon-button matTooltip="Editar" color="primary" aria-label="edit icon"
+          <button mat-icon-button matTooltip="Editar" aria-label="edit icon"
             (click)="openDialogEdit(educacion.id)">
             <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon"
               fontIcon="drive_file_rename_outline"></mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Eliminar" color="warn" aria-label="delete icon"
+          <button mat-icon-button matTooltip="Eliminar" aria-label="delete icon"
             (click)="onDelete(educacion.id)">
             <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete">
             </mat-icon>

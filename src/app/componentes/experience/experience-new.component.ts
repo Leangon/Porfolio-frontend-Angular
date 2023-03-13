@@ -102,6 +102,7 @@ export class ExperienceNewComponent {
       console.log(this.startDate);
       const experience: Experience = new Experience(this.company, this.position, this.description, this.startDate, this.endDate, this.urlLogo, this.persona.id);
       console.log(experience);
+      
       this.porfolioService.saveExperience(experience).subscribe(data => {
         alert("Experiencia añadida");
         window.location.reload();
