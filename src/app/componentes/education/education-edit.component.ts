@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Education } from 'src/app/models/education';
@@ -29,15 +29,14 @@ export class EducationEditComponent {
   dateEnd: Date;
   form: any = FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private router: Router, private imageService: ImageService, private datePipe: DatePipe, @Inject(MAT_DIALOG_DATA) public data: Education) {
+  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private router: Router, private dialogRef: MatDialogRef<EducationEditComponent>, private imageService: ImageService, private datePipe: DatePipe, @Inject(MAT_DIALOG_DATA) public data: Education) {
 
     this.form = this.formBuilder.group(
       {
         university: ['', [Validators.required]],
         title: ['', [Validators.required]],
         dateStart: ['', Validators.required],
-        dateEnd: ['', Validators.required],
-        // urlLogo: ['', Validators.required]
+        dateEnd: ['', Validators.required]
       }
     )
     console.log(this.startDate);
@@ -48,7 +47,7 @@ export class EducationEditComponent {
     this.title = this.data.title;
     this.dateStart = moment(this.data.startDate, 'DD/MM/YYYY').toDate();
     this.dateEnd = moment(this.data.endDate, 'DD/MM/YYYY').toDate();
-    this.persona = {id: this.data.persona.id};
+    this.persona = { id: this.data.persona.id };
   }
 
   get University() {
@@ -67,18 +66,6 @@ export class EducationEditComponent {
     return this.form.get("dateEnd")
   }
 
-  // get UrlLogo() {
-  //   return this.form.get("urlLogo")
-  // }
-
-  // get UrlLogoInvalid(){
-  //   return this.UrlLogo?.touched && !this.UrlLogo?.valid;
-  // }
-
-  // get UrlLogoValid(){
-  //   return this.UrlLogo?.touched && this.UrlLogo?.valid;
-  // }
-
   onUpdate(event: Event, id: number): void {
     event.preventDefault;
 
@@ -87,7 +74,7 @@ export class EducationEditComponent {
     } else {
       this.urlLogo = this.data.urlLogo;
     }
-    console.log("Estoy haciendo click en agregar");
+
     if (this.form.valid) {
       const formattedStartDate: string = this.datePipe.transform(this.dateStart, 'dd/MM/yyyy').toString();
       const formattedEndDate: string = this.datePipe.transform(this.dateEnd, 'dd/MM/yyyy').toString();
@@ -96,12 +83,12 @@ export class EducationEditComponent {
       this.endDate = formattedEndDate;
 
       const education: Education = new Education(this.university, this.title, this.urlLogo, this.startDate, this.endDate, this.persona.id);
-      console.log(education);
 
       this.porfolioService.updateEducation(id, education).subscribe(data => {
-        alert("Educacion editada");
-        this.router.navigate(['']);
-        window.location.reload();
+        alert("Educacion actualizada");
+        const urlTree = this.router.createUrlTree(['/']);
+        this.router.navigateByUrl(urlTree);
+        this.dialogRef.close(true);
       }, err => {
         alert("Fallo editar educacion")
       })

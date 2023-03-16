@@ -18,22 +18,29 @@ export class ProjectsComponent implements OnInit {
   constructor(private toggle: ToggleService, private porfolioService: PorfolioService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.getProyectsList();
     this.toggle.isChecked.subscribe(
       data => {
         this.isChecked = data;
       }
-    );
+    )
+  }
+
+  getProyectsList(){
     this.porfolioService.getProyect().subscribe(data =>{
       this.proyectsList = data;
     })
-
   }
 
   openDialogNewProyect(){
     this.router.navigate([{outlets: { dialog: 'newProyect'}}]);
-    const dialoRef = this.dialog.open(ProyectsNewComponent);
-    dialoRef.afterClosed().subscribe(data =>{
-     console.log('Se cerro'); 
+    const dialogRef = this.dialog.open(ProyectsNewComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val: any) => {
+        if (val) {
+          this.getProyectsList();
+        }
+      }
     })
   }
 
@@ -41,20 +48,27 @@ export class ProjectsComponent implements OnInit {
     this.router.navigate([{outlets: { dialog: ['editProyect', id]}}])
     this.porfolioService.detailProyect(id).subscribe(data =>{
       const proyect = data;
-      const dialogRefEdit = this.dialog.open(ProyectsEditComponent, {
+      const dialogRef = this.dialog.open(ProyectsEditComponent, {
         data: proyect
       });
-      dialogRefEdit.afterClosed().subscribe(data =>{
-        console.log(`Se cerro ${data}`);
+      dialogRef.afterClosed().subscribe({
+        next: (val: any) => {
+          if (val) {
+            this.getProyectsList();
+          }
+        }
       })
     })
   }
 
   onDelete(id: number){
-    this.porfolioService.deleteProyect(id).subscribe(data =>{
-      alert('Proyecto eliminado');
-      window.location.reload();
-    })
+    if (id != undefined) {
+      alert("Proyecto eliminado");
+      this.porfolioService.deleteProyect(id).subscribe(
+        data => {
+          this.getProyectsList();
+        })
+    }
   }
 
   toggleState() {

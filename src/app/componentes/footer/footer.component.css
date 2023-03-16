@@ -1,7 +1,32 @@
-.footer__rodape{
-    padding: 2rem;
-    text-align: center;
-    margin: auto;
-    background: #1E2121;
-    color: #ffffff;
+.footer__rodape {
+  padding: 2rem;
+  text-align: center;
+  margin: auto;
+  background: #1E2121;
+  color: #ffffff;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  margin: auto;
+  width: 80%;
+  justify-content: end;
+}
+
+.example-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
 }

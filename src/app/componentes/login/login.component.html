@@ -1,6 +1,6 @@
 
 <section>
-  <img src="../../../assets/images/acceso.png" class="image" [ngClass]="{'animation': isAnimation}" alt="logo de acceso">
+  <img src="../../../assets/image/acceso.png" class="image" [ngClass]="{'animation': isAnimation}" alt="logo de acceso">
   <h1 class="title" mat-dialog-title>Inicio de sesión</h1>
   <mat-dialog-content class="div">
     <form class="form-group" [formGroup]="form" (ngSubmit)="onEnviar($event)">
@@ -22,12 +22,12 @@
           <p *ngIf="Password?.errors?.minlength" class="error">El password debe tener 8 o más caracteres.</p>
         </div>
       </div>
-       <div class="d-grid">
-         <button (click)="changeAnimation()" type="submit" mat-fab extended color="primary">
+       <mat-dialog-actions class="action">
+         <button (click)="changeAnimation()" type="submit" mat-fab extended color="primary" [mat-dialog-close]="false">
            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="login icon">login</mat-icon>
            Iniciar sesión
          </button>
-       </div>
+       </mat-dialog-actions>
     </form>  
   </mat-dialog-content>
 </section>

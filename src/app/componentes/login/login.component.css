@@ -24,6 +24,13 @@ section{
   animation: blink 1s infinite;
 }
 
+.action{
+  padding: 0;
+}
+button{
+  flex: 1;
+}
+
 @keyframes blink {
   0% {
     opacity: 0; /* La imagen está invisible */

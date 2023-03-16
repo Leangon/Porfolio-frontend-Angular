@@ -8,7 +8,10 @@
     width: 100%;
   }
   
-  .buttons{
-    display: table-cell;
-    max-width: 600px;
+  .action{
+    padding: 0;
   }
+  button{
+    flex: 1;
+  }
+  

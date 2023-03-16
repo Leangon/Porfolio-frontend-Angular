@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Proyects } from 'src/app/models/proyects';
 import { ImageService } from 'src/app/services/image.service';
@@ -24,7 +25,7 @@ export class ProyectsNewComponent {
 
   form: any = FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private router: Router, private imageService: ImageService,) {
+  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private dialogRef: MatDialogRef<ProyectsNewComponent>, private router: Router, private imageService: ImageService,) {
 
     this.form = this.formBuilder.group(
       {
@@ -86,8 +87,9 @@ export class ProyectsNewComponent {
       
       this.porfolioService.saveProyect(proyect).subscribe(data => {
         alert("Proyecto añadido");
-        this.router.navigate(['']);
-        window.location.reload();
+        const urlTree = this.router.createUrlTree(['/']);
+          this.router.navigateByUrl(urlTree);
+          this.dialogRef.close(true);
       }, err => {
         alert("Fallo guardar Proyecto")
       })

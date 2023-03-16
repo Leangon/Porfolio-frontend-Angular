@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Skill } from 'src/app/models/skill';
 import { Router } from '@angular/router';
 import { DialogService } from 'src/app/services/dialog.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -19,16 +20,16 @@ export class LoginComponent implements OnInit {
   form: any = FormGroup;
   isAnimation: boolean = false;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private route: Router, private dialogService: DialogService) { 
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private dialogService: DialogService, private dialogRef: MatDialogRef<LoginComponent>) {
 
     //*Creamos el grupo de controles para el formulario de login
-      this.form = this.formBuilder.group(
-        {
-          email:['', [Validators.required, Validators.email]],
-          password:['',[Validators.required, Validators.minLength(8)]]
-          // deviceId: [""],
-          // deviceType: [""],
-          // notificationToken: [""]
+    this.form = this.formBuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]]
+        // deviceId: [""],
+        // deviceType: [""],
+        // notificationToken: [""]
       })
   }
 
@@ -36,19 +37,19 @@ export class LoginComponent implements OnInit {
 
   }
 
-  get Password(){
+  get Password() {
     return this.form.get("password");
   }
- 
-  get Email(){
-   return this.form.get("email");
+
+  get Email() {
+    return this.form.get("email");
   }
 
-  get PasswordInvalid(){
+  get PasswordInvalid() {
     return this.Password?.touched && !this.Password?.valid;
   }
 
-  get PasswordValid(){
+  get PasswordValid() {
     return this.Password?.touched && this.Password.valid;
   }
 
@@ -56,32 +57,32 @@ export class LoginComponent implements OnInit {
     return this.Email?.touched && !this.Email?.valid;
   }
 
-  get EmailValid(){
+  get EmailValid() {
     return this.Email?.touched && this.Email.valid;
   }
 
-  onEnviar(event: Event){
+  onEnviar(event: Event) {
     //* Detenemos la propagación o ejecución del compotamiento submit de un form
-    event.preventDefault; 
-    
-    if (this.form.valid){
-      
+    event.preventDefault;
+
+    if (this.form.valid) {
+
       //* Llamamos a nuestro servicio para enviar los datos al servidor
-      //* También podríamos ejecutar alguna lógica extra
-      this.authService.iniciarSesion(this.form.value).subscribe(data => {
-        console.log("Data: " + JSON.stringify(data.token));
-        this.dialogService.closeDialog();
-        this.route.navigate([''])
-        window.location.reload();
-      })
-      // alert("Todo salio bien ¡Enviar formuario!")
-    }else{
+      this.authService.iniciarSesion(this.form.value).subscribe(
+        data => {
+          // console.log("Data: " + JSON.stringify(data.token));
+          alert("Se ha logueado correctamente");
+          const urlTree = this.router.createUrlTree(['']);
+          this.router.navigateByUrl(urlTree);
+          this.dialogRef.close(true);
+        })
+    } else {
       //* Corremos todas las validaciones para que se ejecuten los mensajes de error en el template
-      this.form.markAllAsTouched(); 
+      this.form.markAllAsTouched();
     }
   }
 
-  changeAnimation(): boolean{
+  changeAnimation(): boolean {
     return this.isAnimation = true;
   }
 }

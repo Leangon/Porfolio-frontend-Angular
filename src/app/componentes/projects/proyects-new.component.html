@@ -2,7 +2,7 @@
   <h1 mat-dialog-title>Agregar proyecto</h1>
   <form class="form d-flex flex-column mb-2" class="form" [formGroup]="form" (ngSubmit)="onAdd($event)">
 
-    <mat-form-field class="full-width" appearance="fill">
+    <mat-form-field class="full-width" appearance="outline">
       <mat-label>Nombre del proyecto:</mat-label>
       <input type="text" matInput formControlName="name" placeholder="Ej.: Task List creado con Angular" value=""
         [(ngModel)]="name">
@@ -12,7 +12,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="full-width" appearance="fill">
+    <mat-form-field class="full-width" appearance="outline">
       <mat-label>Descripción:</mat-label>
       <textarea rows="3" type="text" matInput formControlName="description" placeholder="Ej.:" value=""
         [(ngModel)]="description"></textarea>
@@ -25,7 +25,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Url del repositorio</mat-label>
       <input matInput formControlName="urlRepository" placeholder="http:" value="" [(ngModel)]="urlRepository">
       <mat-icon matSuffix>link</mat-icon>
@@ -34,7 +34,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Url de la demo</mat-label>
       <input matInput formControlName="urlDemo" placeholder="http:" value="" [(ngModel)]="urlDemo">
       <mat-icon matSuffix>link</mat-icon>
@@ -53,9 +53,9 @@
       </div>
     </div>
 
-    <mat-dialog-actions class="d-flex justify-content-around buttons">
-      <button mat-raised-button color="primary">Agregar</button>
-      <button mat-raised-button color="accent" mat-dialog-close routerLink="">Cerrar</button>
+    <mat-dialog-actions class="action">
+      <button mat-raised-button type="button" [mat-dialog-close]="false" routerLink="">Cerrar</button>
+      <button mat-raised-button color="primary" type="submit">Agregar</button>
     </mat-dialog-actions>
   </form>
 </div>

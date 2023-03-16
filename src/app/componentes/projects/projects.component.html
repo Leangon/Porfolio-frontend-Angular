@@ -1,8 +1,7 @@
 <section class="experience" id="xp">
   <h2 class="experience__section__title">Proyects</h2>
   <div *ngIf="toggleState()" class="example-button-row">
-    <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon"
-      (click)="openDialogNewProyect()">
+    <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon" (click)="openDialogNewProyect()">
       <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
       </mat-icon>
     </button>
@@ -13,14 +12,15 @@
       <div class="carousel-caption">
         <!-- Agregar logo/captura de pantalla del proyecto -->
         <div class="experience__info text-black">
-          <h2 class="experience__title">{{proyect.name}}</h2>
-          <h3 class="experience__text">{{proyect.description}}</h3>
+          <h2 class="experience__title">{{proyect.name}}.<a [href]="proyect.urlRepository" target=_blank> Ver repo</a>
+          </h2>
+          <h3 class="experience__text">{{proyect.description}}.<a [href]="proyect.urlDemo" target=_blank> Ver demo</a>
+          </h3>
           <div class="experience__description">
             <!-- Enlace del proyecto en Github o GithubPages -->
-            <a [href]="proyect.urlRepository" mat-fab extended color="primary" target=_blank>Repositório</a>
-            <a [href]="proyect.urlDemo" mat-fab extended color="primary" target=_blank>Ver demo</a>
             <div *ngIf="toggleState()" class="icon">
-              <button mat-icon-button matTooltip="Editar" aria-label="edit icon" (click)="openDialogEditProyect(proyect.id)">
+              <button mat-icon-button matTooltip="Editar" aria-label="edit icon"
+                (click)="openDialogEditProyect(proyect.id)">
                 <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon"
                   fontIcon="drive_file_rename_outline"></mat-icon>
               </button>

@@ -1,6 +1,6 @@
 .form {
   min-width: 150px;
-  max-width: 500px;
+  max-width: 350px;
   width: 100%;
 }
 
@@ -8,7 +8,9 @@
   width: 100%;
 }
 
-.buttons{
-  display: table-cell;
-  max-width: 600px;
+.action{
+  padding: 0;
+}
+button{
+  flex: 1;
 }

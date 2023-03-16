@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Proyects } from 'src/app/models/proyects';
 import { ImageService } from 'src/app/services/image.service';
@@ -25,15 +25,14 @@ export class ProyectsEditComponent {
 
   form: any = FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private router: Router, private imageService: ImageService, @Inject(MAT_DIALOG_DATA) public data: Proyects ) {
+  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private dialogRef: MatDialogRef<ProyectsEditComponent>, private router: Router, private imageService: ImageService, @Inject(MAT_DIALOG_DATA) public data: Proyects) {
 
     this.form = this.formBuilder.group(
       {
         name: ['', [Validators.required]],
         description: ['', [Validators.required, Validators.minLength(15)]],
         urlRepository: ['', Validators.required],
-        urlDemo: ['', Validators.required],
-        // urlImage: ['', Validators.required]
+        urlDemo: ['', Validators.required]
       }
     )
   }
@@ -43,7 +42,7 @@ export class ProyectsEditComponent {
     this.description = this.data.description;
     this.urlRepository = this.data.urlRepository;
     this.urlDemo = this.data.urlDemo;
-    this.persona = {id: this.data.persona.id}
+    this.persona = { id: this.data.persona.id }
   }
 
   get Name() {
@@ -88,11 +87,12 @@ export class ProyectsEditComponent {
 
       const proyect: Proyects = new Proyects(this.name, this.description, this.urlRepository, this.urlDemo, this.urlImage, this.persona.id);
       console.log(proyect);
-      
+
       this.porfolioService.updateProyect(id, proyect).subscribe(data => {
         alert("Proyecto editado");
-        this.router.navigate(['']);
-        window.location.reload();
+        const urlTree = this.router.createUrlTree(['/']);
+        this.router.navigateByUrl(urlTree);
+        this.dialogRef.close(true);
       }, err => {
         alert("Fallo editar Proyecto")
       })

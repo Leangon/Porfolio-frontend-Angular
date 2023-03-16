@@ -9,5 +9,6 @@ export const environment = {
     messagingSenderId: '354853722175',
     measurementId: 'G-7GF42E2B1M',
   },
-  production: true
+  production: true,
+  apiUrl: 'https://amused-sibyl-leangon.koyeb.app/api/'
 };

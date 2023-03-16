@@ -19,6 +19,15 @@
     padding: 1rem;
 }
 
+.formcontato__title{
+  padding: 0 0 0 10px;
+  margin: 0;
+}
+
+.formcontato__subtext{
+  padding: 0 0 0 10px;
+}
+
 .form{
     display: flex;
     flex-direction: column;
@@ -125,6 +134,12 @@
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem ;
+  }
+
+  .example-button-row {
+    margin: auto;
+    /* width: 80%; */
+    justify-content: end;
   }
 
 @media screen and (max-width: 768px) {

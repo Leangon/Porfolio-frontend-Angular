@@ -25,12 +25,11 @@ export class EditSkillComponent {
 
   form: any = FormGroup;
 
-  constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private route: Router, public dialogRef: MatDialogRef<EditSkillComponent>, @Inject(MAT_DIALOG_DATA) public data: Skill, private imageService: ImageService) {
+  constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private router: Router, private dialogRef: MatDialogRef<EditSkillComponent>, @Inject(MAT_DIALOG_DATA) public data: Skill, private imageService: ImageService) {
 
     this.form = this.formBuilder.group(
       {
         name: ['', [Validators.required, Validators.minLength(2)]],
-        urlImage: ['', [Validators.required]],
         percent: ['', [Validators.required, Validators.min(0), Validators.max(100)]]
       }
     )
@@ -39,7 +38,6 @@ export class EditSkillComponent {
   ngOnInit(): void {
     this.id = this.data.id;
     this.name = this.data.name;
-    this.urlImage = this.data.urlImage;
     this.percent = this.data.percent;
 
     this.porfolioService.getPersonList().subscribe(data => {
@@ -50,7 +48,12 @@ export class EditSkillComponent {
 
   onUpdate(event: Event): void {
     event.preventDefault;
-    this.urlImage = this.imageService.url;
+
+    if (this.imageService.url) {
+      this.urlImage = this.imageService.url;
+    } else {
+      this.urlImage = this.data.urlImage;
+    }
 
     if (this.form.valid) {
       let skillUp = new Skill(this.name, this.urlImage, this.percent, this.persona.id);
@@ -58,8 +61,9 @@ export class EditSkillComponent {
       this.porfolioService.updateSkill(this.id, skillUp).subscribe(
         date => {
           alert("Skill Actualizada");
-          this.route.navigate([''])
-          window.location.reload();
+          const urlTree = this.router.createUrlTree(['/']);
+          this.router.navigateByUrl(urlTree);
+          this.dialogRef.close(true);
         }, err => {
           alert("Fallo");
         })
@@ -67,7 +71,6 @@ export class EditSkillComponent {
   }
 
   uploadImage(event: any) {
-    // const name = `skill_${nameParam}`
     this.imageService.uploadImage(event)
   }
 

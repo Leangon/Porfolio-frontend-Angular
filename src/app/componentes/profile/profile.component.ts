@@ -17,15 +17,18 @@ export class ProfileComponent implements OnInit {
   constructor(private porfolioService: PorfolioService, private toggle: ToggleService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.porfolioService.getPersonList().subscribe(data => {
-      this.persona = data[0];
-      // console.log(this.persona)
-    });
+    this.getPerson();
     this.toggle.isChecked.subscribe(
       data => {
         this.isChecked = data;
       }
     );
+  }
+
+  getPerson(){
+    this.porfolioService.getPersonList().subscribe(data => {
+      this.persona = data[0];
+    });
   }
 
   openDialogEditPerson(id: number): void {
@@ -35,13 +38,16 @@ export class ProfileComponent implements OnInit {
       const dialogRef = this.dialog.open(ProfileEditComponent, {
         data: persona,
       });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
+      dialogRef.afterClosed().subscribe({
+        next: (val: any) => {
+          if (val) {
+            this.getPerson();
+          }
+        }
+      })
     },err =>{
       alert('Error al traer persona');
     })
-
   }
   
 }

@@ -1,7 +1,7 @@
 <div mat-dialog-content>
     <h1 mat-dialog-title>Agregar educación</h1>
     <form class="form d-flex flex-column mb-2" class="form" [formGroup]="form" (ngSubmit)="onAdd($event)">
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Nombre de Institución:</mat-label>
         <input type="name" matInput formControlName="university" placeholder="Ej.: UTN" [(ngModel)]="university">
         <mat-icon matSuffix>apartment</mat-icon>
@@ -10,7 +10,7 @@
         </mat-error>
       </mat-form-field>
   
-      <mat-form-field class="full-width" appearance="fill">
+      <mat-form-field class="full-width" appearance="outline">
         <mat-label>Titulo académico:</mat-label>
         <input type="text" matInput formControlName="title" placeholder="Ej.: Licenciado en sistemas" value="" [(ngModel)]="title">
         <mat-icon matSuffix>supervisor_account</mat-icon>
@@ -19,7 +19,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field color="accent" class="full-width" appearance="fill">
+      <mat-form-field color="accent" class="full-width" appearance="outline">
         <mat-label>Seleccione una fecha de inicio</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="dateStart" [(ngModel)]="dateStart">
         <mat-hint>DD/MM/YYYY</mat-hint>
@@ -30,7 +30,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field color="accent" class="full-width" appearance="fill">
+      <mat-form-field color="accent" class="full-width" appearance="outline">
         <mat-label>Seleccione una fecha de finalización</mat-label>
         <input matInput [matDatepicker]="picker1" formControlName="dateEnd" [(ngModel)]="dateEnd">
         <mat-hint>DD/MM/YYYY</mat-hint>
@@ -41,12 +41,6 @@
         </mat-error>
       </mat-form-field>
   
-      <!-- <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Url de la imagen</mat-label>
-        <input matInput formControlName="urlImage" placeholder="http:" value="" [(ngModel)]="urlImage">
-        <mat-icon matSuffix>link</mat-icon>
-      </mat-form-field> -->
-  
       <div>
         <label for="image">Seleccione una imagen</label>
         <input type="file" class="form-control" id="imagen" name="imagen" formControlName="urlLogo" [ngClass]="{'is-invalid': UrlLogoInvalid, 'is-valid': UrlLogoValid}" (change)="uploadImage($event)" accept=".jpg, .png">
@@ -55,9 +49,9 @@
         </div>
       </div>
   
-      <mat-dialog-actions class="d-flex justify-content-around buttons">
-        <button mat-raised-button color="primary">Agregar</button>
-        <button mat-raised-button color="accent" mat-dialog-close routerLink="">Cerrar</button>
+      <mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false" routerLink="">Cerrar</button>
+        <button mat-raised-button color="primary" type="submit">Agregar</button>
       </mat-dialog-actions>
     </form>
   </div>

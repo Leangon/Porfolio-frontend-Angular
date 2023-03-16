@@ -13,16 +13,14 @@ import { EducationNewComponent } from './education-new.component';
 })
 
 export class EducationComponent implements OnInit {
-  
-  educationList:any;
+
+  educationList: any;
   isChecked: boolean = false;
 
-  constructor(private datosPorfolio:PorfolioService, private toggle: ToggleService, private router: Router, private dialog: MatDialog, ) { }
+  constructor(private datosPorfolio: PorfolioService, private toggle: ToggleService, private router: Router, private dialog: MatDialog,) { }
 
   ngOnInit(): void {
-    this.datosPorfolio.getEducation().subscribe(data => {
-      this.educationList = data;
-    });
+    this.getEducationList();
     this.toggle.isChecked.subscribe(
       data => {
         this.isChecked = data;
@@ -30,11 +28,21 @@ export class EducationComponent implements OnInit {
     );
   }
 
-  openDialogNewEducation(){
-    this.router.navigate([{outlets: { dialog: 'newExperience'}}])
+  getEducationList() {
+    this.datosPorfolio.getEducation().subscribe(data => {
+      this.educationList = data;
+    });
+  }
+
+  openDialogNewEducation() {
+    this.router.navigate([{ outlets: { dialog: 'newExperience' } }])
     const dialogRef = this.dialog.open(EducationNewComponent);
-    dialogRef.afterClosed().subscribe(data => {
-      console.log(`Resultado de dialogo EducationNew: ${data}`);
+    dialogRef.afterClosed().subscribe({
+      next: (val: any) => {
+        if (val) {
+          this.getEducationList();
+        }
+      }
     })
   }
 
@@ -45,18 +53,24 @@ export class EducationComponent implements OnInit {
       const dialogRef = this.dialog.open(EducationEditComponent, {
         data: education
       });
-      dialogRef.afterClosed().subscribe(data =>{
-        console.log(`Resultado educationEditDialog: ${data}`);
+      dialogRef.afterClosed().subscribe({
+        next: (val: any) => {
+          if (val) {
+            this.getEducationList();
+          }
+        }
       })
     })
-
   }
 
-  onDelete(id: number){
-    this.datosPorfolio.deleteEducation(id).subscribe(data =>{
-      alert("Edu eliminada")
-      window.location.reload();
-    })
+  onDelete(id: number) {
+    if (id != undefined) {
+      alert("Educación eliminada");
+      this.datosPorfolio.deleteEducation(id).subscribe(
+        data => {
+          this.getEducationList();
+        })
+    }
   }
 
   toggleState() {

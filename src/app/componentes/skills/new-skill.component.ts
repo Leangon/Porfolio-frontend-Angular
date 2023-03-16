@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Skill } from 'src/app/models/skill';
 import { ImageService } from 'src/app/services/image.service';
@@ -22,7 +23,7 @@ export class NewSkillComponent implements OnInit{
 
   form: any = FormGroup;
 
-  constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private route: Router, public imageService: ImageService) {
+  constructor(private porfolioService: PorfolioService, private formBuilder: FormBuilder, private router: Router, private dialogRef: MatDialogRef<NewSkillComponent>, public imageService: ImageService) {
     
     this.form = this.formBuilder.group(
       {
@@ -53,8 +54,10 @@ export class NewSkillComponent implements OnInit{
       console.log(skill);
       this.porfolioService.saveSkill(skill).subscribe(
         date => {
-          alert("Experiencia añadida");
-          window.location.reload();
+          alert("Skill añadida");
+          const urlTree = this.router.createUrlTree(['/']);
+          this.router.navigateByUrl(urlTree);
+          this.dialogRef.close(true);
         }, err => {
           alert("Fallo");
         })
@@ -62,7 +65,6 @@ export class NewSkillComponent implements OnInit{
   }
 
   uploadImage(event: any){
-    // const name = nameParam;
     this.imageService.uploadImage(event)
   }
 

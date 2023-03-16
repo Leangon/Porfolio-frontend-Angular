@@ -23,14 +23,18 @@ export class ExperienceComponent {
    }
 
    ngOnInit(): void {
-    this.porfolioService.getExperiences().subscribe(data => {
-      this.experienceList = data;
-    });
+    this.getExperienceList();
     this.toggle.isChecked.subscribe(
       data => {
         this.isChecked = data;
       }
     );
+  }
+
+  getExperienceList(){
+    this.porfolioService.getExperiences().subscribe(data => {
+      this.experienceList = data;
+    });
   }
 
    toggleState() {
@@ -45,8 +49,12 @@ export class ExperienceComponent {
   openDialogNewExperience(){
     this.router.navigate([{outlets: { dialog: 'newExperience'}}])
     const dialogRef = this.dialog.open(ExperienceNewComponent);
-    dialogRef.afterClosed().subscribe(data => {
-      console.log(`Resultado de dialogo ExperienceNew: ${data}`);
+    dialogRef.afterClosed().subscribe({
+      next: (val: any) => {
+        if (val) {
+          this.getExperienceList();
+        }
+      }
     })
   }
 
@@ -54,19 +62,26 @@ export class ExperienceComponent {
     this.router.navigate([{outlets: { dialog: ['editExperience', id] }}]);
     this.porfolioService.datailExperience(id).subscribe(data =>{
       const experience = data;
-      const dialogRefEdit = this.dialog.open(ExperienceEditComponent, {
+      const dialogRef = this.dialog.open(ExperienceEditComponent, {
         data: experience
       });
-      dialogRefEdit.afterClosed().subscribe(data => {
-        console.log(`Resultado de dialogo ExperienceEdit: ${data}`);
+      dialogRef.afterClosed().subscribe({
+        next: (val: any) => {
+          if (val) {
+            this.getExperienceList();
+          }
+        }
       })
     })
   }
 
   onDelete(id: number): void{
-    this.porfolioService.deleteExperience(id).subscribe(data => {
-      console.log("Experiencia eliminada");
-      window.location.reload();
-    })
+    if (id != undefined) {
+      alert("Experience eliminada");
+      this.porfolioService.deleteExperience(id).subscribe(
+        data => {
+          this.getExperienceList();
+        })
+    }
   }
 }

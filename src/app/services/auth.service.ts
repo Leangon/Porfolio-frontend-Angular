@@ -4,12 +4,14 @@ import { BehaviorSubject, Observable} from "rxjs"; //*tiene la caracteristica de
 import { Router } from "@angular/router";
 import { map } from 'rxjs/operators';
 import { JwtDto } from '../models/jwtDto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // url = 'http//localhost:8080/api'; //*La url que corresponda en casa caso
+  url: string = environment.apiUrl;
+
   currentUserSubject: BehaviorSubject<any>;
 
   constructor(private http: HttpClient) {
@@ -18,10 +20,8 @@ export class AuthService {
     console.log(this.currentUserSubject.value);
    }
 
-  iniciarSesion(credenciales: any ):Observable<JwtDto> {
-    return this.http
-      .post<JwtDto>('/api/auth/login', credenciales)
-      .pipe(map(data => {
+  iniciarSesion(credenciales: any ):Observable<JwtDto>{
+    return this.http.post<JwtDto>(this.url + 'auth/login', credenciales).pipe(map(data => {
         localStorage.setItem('currentUser', JSON.stringify(data));
         this.currentUserSubject.next(data);
         // if (this.UsuarioAuntenticado){

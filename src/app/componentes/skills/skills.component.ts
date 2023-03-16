@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PorfolioService } from 'src/app/services/porfolio.service';
 import { ToggleService } from 'src/app/services/toggle.service';
@@ -17,19 +17,22 @@ export class SkillsComponent implements OnInit {
   isChecked: boolean = false;
 
   constructor(private porfolioService: PorfolioService, private toggle: ToggleService, private dialog: MatDialog, private router: Router,) {
-   }
+  }
 
   ngOnInit(): void {
-    this.porfolioService.getSkills().subscribe(data => {
-      this.skillsList = data;
-      // console.log(this.skillsList);
-    });
+    this.getSkillsList();
     this.toggle.isChecked.subscribe(
       data => {
         this.isChecked = data;
       }
     );
-    // console.log(`Este es toggle ${this.isChecked}`);
+  }
+
+  getSkillsList(){
+    this.porfolioService.getSkills().subscribe(data => {
+      this.skillsList = data;
+      // console.log(this.skillsList);
+    });
   }
 
   toggleState() {
@@ -38,31 +41,41 @@ export class SkillsComponent implements OnInit {
 
   openDialog(): void {
     this.router.navigate([{ outlets: { dialog: 'newSkill' } }]);
-    this.dialog.open(NewSkillComponent);
+    const dialogRef = this.dialog.open(NewSkillComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val: any) => {
+        if (val) {
+          this.getSkillsList();
+        }
+      }
+    })
   }
 
   openDialogEdit(id: number): void {
-    this.router.navigate([{ outlets: { dialog: ['editSkill', id]}}]);
-    this.porfolioService.detailSkill(id).subscribe(datas =>{
+    this.router.navigate([{ outlets: { dialog: ['editSkill', id] } }]);
+    this.porfolioService.detailSkill(id).subscribe(datas => {
       const skill = datas;
       const dialogRef = this.dialog.open(EditSkillComponent, {
         data: skill,
       });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
-    },err =>{
+      dialogRef.afterClosed().subscribe({
+        next: (val: any) => {
+          if (val) {
+            this.getSkillsList();
+          }
+        }
+      })
+    }, err => {
       alert('Error al traer skill');
     })
-
   }
 
   delete(id: number): void {
     if (id != undefined) {
-      alert("esta por eleminar una skill");
+      alert("Skill eliminada");
       this.porfolioService.deleteSkill(id).subscribe(
         data => {
-          window.location.reload();
+          this.getSkillsList();
         })
     }
   }

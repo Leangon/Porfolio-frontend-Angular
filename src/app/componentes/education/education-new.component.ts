@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Education } from 'src/app/models/education';
 import { ImageService } from 'src/app/services/image.service';
@@ -28,7 +29,7 @@ export class EducationNewComponent {
   dateEnd: Date;
   form: any = FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private router: Router, private imageService: ImageService, private datePipe: DatePipe ) {
+  constructor(private formBuilder: FormBuilder, private porfolioService: PorfolioService, private router: Router, private dialogRef: MatDialogRef<EducationNewComponent>, private imageService: ImageService, private datePipe: DatePipe ) {
 
     this.form = this.formBuilder.group(
       {
@@ -49,10 +50,6 @@ export class EducationNewComponent {
       console.log(this.persona);
     })
   }
-
-  // getFormattedDate(): string {
-  //   return this.datePipe.transform(this.startDate, 'dd/MM/yyyy');
-  // }
 
   get University() {
     return this.form.get("university")
@@ -93,15 +90,14 @@ export class EducationNewComponent {
 
       this.startDate = formattedStartDate;
       this.endDate = formattedEndDate;
-      console.log(this.startDate);
 
       const education: Education = new Education(this.university, this.title, this.urlLogo, this.startDate, this.endDate, this.persona.id);
-      console.log(education);
       
       this.porfolioService.saveEducation(education).subscribe(data => {
         alert("Educacion añadida");
-        this.router.navigate(['']);
-        window.location.reload();
+        const urlTree = this.router.createUrlTree(['/']);
+          this.router.navigateByUrl(urlTree);
+          this.dialogRef.close(true);
       }, err => {
         alert("Fallo guardar educacion")
       })

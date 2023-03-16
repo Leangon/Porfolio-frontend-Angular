@@ -50,8 +50,14 @@ export class MenuComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialogService.dialogRef = this.matDialog.open(LoginComponent);
-    this.router.navigate([{outlets: { dialog: 'login'}}])
+    const dialogRef = this.matDialog.open(LoginComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val: any) => {
+        if (val) {
+          window.location.reload();
+        }
+      }
+    })
   }
 
   onLogout():void {
