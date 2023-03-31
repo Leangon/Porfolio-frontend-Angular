@@ -11,6 +11,7 @@ import { EducationNewComponent } from '../componentes/education/education-new.co
 import { EducationEditComponent } from '../componentes/education/education-edit.component';
 import { ProyectsEditComponent } from '../componentes/projects/proyects-edit.component';
 import { ProyectsNewComponent } from '../componentes/projects/proyects-new.component';
+import { ProjectsComponent } from '../componentes/projects/projects.component';
 
 const routes: Routes = [
   {path: '', component: PorfolioComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'editEducation/:id', component: EducationEditComponent, outlet: 'dialog'},
   {path: 'newProyect', component: ProyectsNewComponent, outlet: 'dialog'},
   {path: 'editProyect/:id', component: ProyectsEditComponent, outlet: 'dialog'},
+  {path: 'proyects', component: ProjectsComponent}
   // {path: '**', component: Pagina404Component}
 ];
 

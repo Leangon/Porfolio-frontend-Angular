@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-btn-goup',
@@ -8,8 +9,9 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 export class BtnGoupComponent implements OnInit {
 
   btn!: HTMLElement;
+  isLoading$ = this.spinnerService.isLoading$
   
-  constructor() { }
+  constructor(private spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
     this.btn = document.querySelector('#button')!;
@@ -29,8 +31,10 @@ export class BtnGoupComponent implements OnInit {
     var scroll: number = document.documentElement.scrollTop;
     if (scroll > 0) {
       window.requestAnimationFrame(this.backToTop);
-      window.scrollTo(0, scroll - (scroll / 15))      
+      window.scrollTo(0, scroll - (scroll / 10));     
     }
   }
+
+
 }
 

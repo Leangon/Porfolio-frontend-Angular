@@ -85,10 +85,6 @@ a{
   .title__subsection {
     font-size: 1rem;
   }
-
-  /* .title__profile {
-    width: 150px;
-  } */
 }
 
 @media screen and (max-width: 576px) {
@@ -109,7 +105,6 @@ a{
 }
 
 .about{
-    /* margin: 2rem 0; */
     padding: 1rem 0;
     background: var(--cor-de-cards);
     color: var(--cor-de-letra);
@@ -134,5 +129,11 @@ a{
     .about__container{
         width: 90%;
         padding: 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .title__div{
+        align-items: center;
     }
 }

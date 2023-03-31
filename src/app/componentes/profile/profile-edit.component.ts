@@ -51,7 +51,7 @@ export class ProfileEditComponent {
       this.porfolioService.updatePerson(this.id, personUp).subscribe(
         date =>{
           alert("persona actualizada");
-          const urlTree = this.router.createUrlTree(['/']);
+          const urlTree = this.router.createUrlTree(['']);
           this.router.navigateByUrl(urlTree);
           this.dialogRef.close(true);
         }, err => {
@@ -77,17 +77,6 @@ export class ProfileEditComponent {
 
   get AboutMe() {
     return this.form.get('aboutMe');
-  }
-  get UrlImage() {
-    return this.form.get("urlImage");
-  }
-
-  get UrlImageInvalid(){
-    return this.UrlImage?.touched && !this.UrlImage?.valid;
-  }
-
-  get UrlImageValid(){
-    return this.UrlImage?.touched && this.UrlImage.valid;
   }
 
 }

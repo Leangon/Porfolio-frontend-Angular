@@ -30,3 +30,11 @@
   justify-content: center;
   width: 120px;
 }
+
+@media screen and (max-width: 576px) {
+  .example-button-row {
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+  }
+}

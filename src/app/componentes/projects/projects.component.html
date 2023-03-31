@@ -1,23 +1,50 @@
 <section class="experience" id="xp">
-  <h2 class="experience__section__title">Proyects</h2>
+  <h2 class="experience__title">Proyects</h2>
   <div *ngIf="toggleState()" class="example-button-row">
     <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon" (click)="openDialogNewProyect()">
       <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
       </mat-icon>
     </button>
   </div>
-  <carousel>
+  <div class="proyects">
+    <mat-card class="example-card" *ngFor="let proyect of proyectsList">
+      <img mat-card-image [src]="proyect.urlImage" alt="Photo of a Shiba Inu">
+      <mat-card-header>
+        <mat-card-title>{{proyect.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{proyect.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a [href]="proyect.urlRepository" target=_blank mat-button>Repositorio</a>
+        <a [href]="proyect.urlDemo" target=_blank mat-button>Demo</a>
+      </mat-card-actions>
+      <div *ngIf="toggleState()" class="icon">
+        <button mat-icon-button matTooltip="Editar" aria-label="edit icon"
+          (click)="openDialogEditProyect(proyect.id)">
+          <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon"
+            fontIcon="drive_file_rename_outline"></mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Eliminar" aria-label="delete icon" (click)="onDelete(proyect.id)">
+          <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete">
+          </mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+  <mat-divider></mat-divider>
+  <!-- <carousel>
     <slide *ngFor="let proyect of proyectsList">
       <img class="experience__img" [src]="proyect.urlImage">
       <div class="carousel-caption">
-        <!-- Agregar logo/captura de pantalla del proyecto -->
         <div class="experience__info text-black">
           <h2 class="experience__title">{{proyect.name}}.<a [href]="proyect.urlRepository" target=_blank> Ver repo</a>
           </h2>
           <h3 class="experience__text">{{proyect.description}}.<a [href]="proyect.urlDemo" target=_blank> Ver demo</a>
           </h3>
           <div class="experience__description">
-            <!-- Enlace del proyecto en Github o GithubPages -->
             <div *ngIf="toggleState()" class="icon">
               <button mat-icon-button matTooltip="Editar" aria-label="edit icon"
                 (click)="openDialogEditProyect(proyect.id)">
@@ -30,9 +57,8 @@
               </button>
             </div>
           </div>
-
         </div>
       </div>
     </slide>
-  </carousel>
+  </carousel> -->
 </section>

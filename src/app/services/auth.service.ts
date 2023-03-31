@@ -13,11 +13,14 @@ export class AuthService {
   url: string = environment.apiUrl;
 
   currentUserSubject: BehaviorSubject<any>;
+  isAuthenticated$: Observable<boolean>;
 
   constructor(private http: HttpClient) {
     console.log("El servicio esta corriendo");
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') || '{}'))
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') || null))
     console.log(this.currentUserSubject.value);
+    this.isAuthenticated$ = this.currentUserSubject.asObservable().pipe(map(user => !!user));
+    console.log(this.isAuthenticated$);
    }
 
   iniciarSesion(credenciales: any ):Observable<JwtDto>{
@@ -37,6 +40,7 @@ export class AuthService {
 
   //*Para cerrar sesión eliminamos el token del localStorage
   public logout():void {
+    this.currentUserSubject.next(null);
     localStorage.removeItem('currentUser');
   }
 

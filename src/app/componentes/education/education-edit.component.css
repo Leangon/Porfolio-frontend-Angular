@@ -6,12 +6,19 @@
   
   .full-width {
     width: 100%;
+    flex: 1;
   }
   
   .action{
+    margin-top: 1rem;
     padding: 0;
   }
   button{
     flex: 1;
+  }
+
+  .date{
+    display: flex;
+    gap: 1rem;
   }
   

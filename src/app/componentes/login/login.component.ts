@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Skill } from 'src/app/models/skill';
 import { Router } from '@angular/router';
 import { DialogService } from 'src/app/services/dialog.service';
 import { MatDialogRef } from '@angular/material/dialog';
-
 
 @Component({
   selector: 'app-login',
@@ -14,13 +12,16 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 
 export class LoginComponent implements OnInit {
-
   email: string = '';
   password: string = '';
   form: any = FormGroup;
   isAnimation: boolean = false;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private dialogService: DialogService, private dialogRef: MatDialogRef<LoginComponent>) {
+  constructor(
+    private authService: AuthService, 
+    private formBuilder: FormBuilder, 
+    private router: Router, 
+    private dialogRef: MatDialogRef<LoginComponent>) {
 
     //*Creamos el grupo de controles para el formulario de login
     this.form = this.formBuilder.group(
@@ -66,7 +67,6 @@ export class LoginComponent implements OnInit {
     event.preventDefault;
 
     if (this.form.valid) {
-
       //* Llamamos a nuestro servicio para enviar los datos al servidor
       this.authService.iniciarSesion(this.form.value).subscribe(
         data => {

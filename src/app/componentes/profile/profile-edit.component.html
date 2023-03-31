@@ -2,11 +2,11 @@
     <h1 mat-dialog-title>Editar perfil</h1>
     <form class="d-flex flex-column mb-2" class="form" [formGroup]="form" (ngSubmit)="onUpdate($event)">
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Titulo</mat-label>
+        <mat-label>Título</mat-label>
         <textarea matInput type="text" matInput formControlName="title" placeholder="Hola, mi nombre es Leandro..." [(ngModel)]="title"></textarea>
         <mat-icon matSuffix>title</mat-icon>
         <mat-error *ngIf="Title?.hasError('required')">
-          El titulo es <strong>requerido</strong>
+          El título es <strong>requerido</strong>
         </mat-error>
         <mat-error *ngIf="Title?.errors && !Title?.hasError('required')">
             Debe contener al menos <strong>10 caracteres</strong>
@@ -14,7 +14,7 @@
       </mat-form-field>
   
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Descripció</mat-label>
+        <mat-label>Descripción</mat-label>
         <textarea rows="4" matInput type="text" matInput formControlName="description" placeholder="Soy un desarrollador..." value="" [(ngModel)]="description"></textarea>
         <mat-icon matSuffix>description</mat-icon>
         <mat-error *ngIf="Description?.hasError('required')">
@@ -30,7 +30,7 @@
         <textarea rows="10" matInput type="text" matInput formControlName="aboutMe" placeholder="Hello" [(ngModel)]="aboutMe"></textarea>
         <mat-icon matSuffix>person</mat-icon>
         <mat-error *ngIf="AboutMe?.hasError('required')">
-          El about me es <strong>requerido</strong>
+          About me es <strong>requerido</strong>
         </mat-error>
         <mat-error *ngIf="AboutMe?.errors && !AboutMe?.hasError('required')">
             Debe contener al menos <strong>50 caracteres</strong>
@@ -39,7 +39,7 @@
   
       <div>
         <label for="image">Seleccione una imagen</label>
-        <input type="file" class="form-control" id="imagen" name="imagen" [(ngModel)]="urlImage" (change)="uploadImage($event)" accept=".jpg, .png">
+        <input type="file" class="form-control" id="imagen" name="image" [(ngModel)]="urlImage" [ngModelOptions]="{standalone: true}" (change)="uploadImage($event)" accept=".jpg, .png">
       </div>
   
       <mat-dialog-actions class="action">

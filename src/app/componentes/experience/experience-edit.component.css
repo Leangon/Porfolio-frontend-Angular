@@ -14,3 +14,9 @@
   button{
     flex: 1;
   }
+
+  .date{
+    display: flex;
+    gap: 1rem;
+  }
+  

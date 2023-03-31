@@ -7,6 +7,7 @@ import { ThemePalette } from '@angular/material/core';
 import { ToggleService } from 'src/app/services/toggle.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -22,31 +23,33 @@ export class MenuComponent implements OnInit {
   color: ThemePalette = 'primary';
   isChecked: boolean = false;
   showPopover: boolean = false;
-  isAuthenticated: boolean = false
-  
-  constructor(private datosPorfolio:PorfolioService, private matDialog: MatDialog, private dialogService: DialogService, private toggle: ToggleService, private auth: AuthService, private router: Router) {
-    
-   }
+  isAuthenticated: boolean = false;
+  private subscription: Subscription;
 
-  ngOnInit(): void {
-    this.datosPorfolio.getPersonList().subscribe(data =>{
-      this.miPorfolio = data;
-    }); 
-    if (this.auth.logIn) {
-      this.disabled = false;
-      this.isChecked = true;
+  constructor(
+    private datosPorfolio: PorfolioService, 
+    private matDialog: MatDialog, 
+    private toggleService: ToggleService, 
+    private authService: AuthService, 
+    private router: Router) {
+    
+      this.subscription = this.authService.isAuthenticated$.subscribe(data => {
+      this.isAuthenticated = data;
+      this.disabled = !data;
+      this.isChecked = data;
+      this.showPopover = !data;
       this.updateIsChecked();
-      this.isAuthenticated = true;
-    }else{
-      this.disabled = true;
-    }
-    if (this.disabled) {
-      this.showPopover = true;
-    }
+    })
   }
 
-  updateIsChecked(){
-    return this.toggle.updateToggle(this.isChecked)
+  ngOnInit(): void {
+    this.datosPorfolio.getPersonList().subscribe(data => {
+      this.miPorfolio = data;
+    });
+  }
+
+  updateIsChecked() {
+    return this.toggleService.updateToggle(this.isChecked)
   }
 
   openDialog() {
@@ -54,15 +57,14 @@ export class MenuComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (val: any) => {
         if (val) {
-          window.location.reload();
+          this.router.navigate([''])
         }
       }
     })
   }
 
-  onLogout():void {
-    this.auth.logout();
-    window.location.reload();
+  onLogout(): void {
+    this.authService.logout();
   }
 
 }

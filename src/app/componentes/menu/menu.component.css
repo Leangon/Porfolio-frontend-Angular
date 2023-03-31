@@ -27,21 +27,7 @@ a{
 .menu__title{
     margin-left: 0.6rem;
     margin-bottom: 0;   
-
-    /* white-space: nowrap;
-    border-right: 2px solid;
-    width: 17ch;
-    animation: typing 3s steps(17) infinite, blink .5s infinite alternate;
-    overflow: hidden; */
 }
-
-/* @keyframes typing {
-    from {width: 0}
-}
-
-@keyframes blink {
-    50% {border-color: transparent;}
-} */
 
 @media screen and (max-width: 768px) {
 
@@ -51,5 +37,11 @@ a{
 
     .nav-item{
         display: none;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .menu__image{
+        width: 100px;
     }
 }

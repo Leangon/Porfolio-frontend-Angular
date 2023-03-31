@@ -1,47 +1,38 @@
 <section class="academic" id="formacion">
-  <div class="academic__content">
-    <h2 class="academic__title">Formación académica</h2>
-    <div *ngIf="toggleState()" class="example-button-row">
-      <button 
-      mat-icon-button 
-      matTooltip="Agregar" 
-      aria-label="add cirle icon"
-      (click)="openDialogNewEducation()">
-        <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
-        </mat-icon>
-      </button>
-    </div>
-    <div class="academic__courses">
-      <div class="academic__courses__box" *ngFor="let educacion of educationList">
-        <ul class="academic__courses__list">
-          <!-- Agregar logo de la institución de formación -->
-          <li class="academic__courses__item__img"><img [src]="educacion.urlLogo"></li>
-          <li class="academic__courses__item__title">
-            <h3>{{educacion.university}}</h3>
-          </li>
-          <li class="academic__courses__item__subtitle">
-            <p>{{educacion.title}}</p>
-          </li>
-          <li class="academic__courses__item__subtitle">
-            <p><time>{{educacion.startDate}}</time> - <time>{{educacion.endDate}}</time></p>
-          </li>
-        </ul>
+  <h2 class="academic__title">Formación académica</h2>
+  <div *ngIf="toggleState()" class="example-button-row">
+    <button mat-icon-button matTooltip="Agregar" aria-label="add cirle icon" (click)="openDialogNewEducation()">
+      <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="add_circle">
+      </mat-icon>
+    </button>
+  </div>
+  <div class="academic__courses">
+    <div class="academic__courses__box" *ngFor="let educacion of educationList">
+      <ul class="academic__courses__list">
+        <!-- Agregar logo de la institución de formación -->
+        <li class="academic__courses__item__img"><img [src]="educacion.urlLogo"></li>
+        <li class="academic__courses__item__title">
+          <h3>{{educacion.university}}</h3>
+        </li>
+        <li class="academic__courses__item__subtitle">
+          <p>{{educacion.title}}</p>
+        </li>
+        <li class="academic__courses__item__subtitle">
+          <p><time>{{educacion.startDate}}</time> - <time>{{educacion.endDate}}</time></p>
+        </li>
+      </ul>
 
-        <div *ngIf="toggleState()" class="icon">
-          <button mat-icon-button matTooltip="Editar" aria-label="edit icon"
-            (click)="openDialogEdit(educacion.id)">
-            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon"
-              fontIcon="drive_file_rename_outline"></mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="Eliminar" aria-label="delete icon"
-            (click)="onDelete(educacion.id)">
-            <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete">
-            </mat-icon>
-          </button>
-        </div>
+      <div *ngIf="toggleState()" class="icon">
+        <button mat-icon-button matTooltip="Editar" aria-label="edit icon" (click)="openDialogEdit(educacion.id)">
+          <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon"
+            fontIcon="drive_file_rename_outline"></mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Eliminar" aria-label="delete icon" (click)="onDelete(educacion.id)">
+          <mat-icon class="material-symbols-outlined" aria-hidden="false" aria-label="icon" fontIcon="delete">
+          </mat-icon>
+        </button>
       </div>
     </div>
-    <mat-divider></mat-divider>
   </div>
-
+  <mat-divider></mat-divider>
 </section>

@@ -19,27 +19,29 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field color="accent" class="full-width" appearance="outline">
-        <mat-label>Seleccione una fecha de inicio</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dateStart" [(ngModel)]="dateStart">
-        <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="StartDate?.hasError('required')">
-          La fecha es <strong>requerida</strong>
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field color="accent" class="full-width" appearance="outline">
-        <mat-label>Seleccione una fecha de finalización</mat-label>
-        <input matInput [matDatepicker]="picker1" formControlName="dateEnd" [(ngModel)]="dateEnd">
-        <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-        <mat-error *ngIf="EndDate?.hasError('required')">
+      <div class="date">
+        <mat-form-field color="accent" class="full-width" appearance="outline">
+          <mat-label>Fecha de inicio</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateStart" [(ngModel)]="dateStart">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="StartDate?.hasError('required')">
             La fecha es <strong>requerida</strong>
-        </mat-error>
-      </mat-form-field>
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field color="accent" class="full-width" appearance="outline">
+          <mat-label>Fecha de finalización</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="dateEnd" [(ngModel)]="dateEnd">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error *ngIf="EndDate?.hasError('required')">
+              La fecha es <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
   
       <div>
         <label for="image">Seleccione una imagen</label>

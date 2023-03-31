@@ -1,8 +1,11 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+  import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { data } from 'jquery';
+import { Subscription } from 'rxjs';
 import { Experience } from 'src/app/models/experience';
+import { AuthService } from 'src/app/services/auth.service';
 import { PorfolioService } from 'src/app/services/porfolio.service';
 import { ToggleService } from 'src/app/services/toggle.service';
 import { ExperienceEditComponent } from './experience-edit.component';
@@ -17,9 +20,18 @@ export class ExperienceComponent {
 
   experienceList: any;
   isChecked: boolean = false;
+  disabled: boolean = true;
+  private subscription: Subscription;
 
-  constructor(private porfolioService: PorfolioService, private toggle: ToggleService, private dialog: MatDialog, private router: Router, ) {
-    
+  constructor(
+    private porfolioService: PorfolioService, 
+    private toggle: ToggleService, 
+    private dialog: MatDialog, 
+    private router: Router, 
+    private authService: AuthService) {
+    this.subscription = this.authService.isAuthenticated$.subscribe(data => {
+      this.disabled = !data;
+    })
    }
 
    ngOnInit(): void {
@@ -42,8 +54,12 @@ export class ExperienceComponent {
   }
   
   drop(event: CdkDragDrop<Experience[]>) {
+    let previousIndex = event.previousIndex;
+    let currentIndex = event.currentIndex;
     moveItemInArray(this.experienceList, event.previousIndex, event.currentIndex);
     console.log(this.experienceList);
+    console.log(previousIndex);
+    console.log(currentIndex);
   }
 
   openDialogNewExperience(){
